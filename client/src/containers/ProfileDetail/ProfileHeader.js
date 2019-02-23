@@ -17,10 +17,12 @@ const ProfileHeader = ({ profile }) => {
               </div>
             </div>
             <div className="text-center">
-              <h1 className="display-4 text-center">{profile.user.name}</h1>
+              <h1 className="display-5 text-center pt-2">
+                {profile.user.name}
+              </h1>
               <p className="lead text-center">
                 {capitalizeFirstChar(profile.status)}{' '}
-                {profile.company ? `at ${profile.company}` : null}
+                {profile.company ? `@ ${profile.company}` : null}
               </p>
               {profile.location ? <p>{profile.location}</p> : null}
               <p>

@@ -40,15 +40,15 @@ class AddExperience extends Component {
               >
                 Back
               </Link>
-              <h1 className="display-4 text-center">Add Experience</h1>
+              <h1 className="display-4 text-center">경력사항 추가하기</h1>
               <p className="lead text-center">
-                Add any job or position that you've had
+                회원님의 과거 및 현재 경력사항을 추가해주세요
               </p>
-              <small className="d-block pb-3">* = required fields</small>
+              <small className="d-block pb-3">* = 필수항목</small>
               <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
                 {this.renderFields()}
                 <button type="submit" className="btn btn-info btn-block mt-4">
-                  Submit
+                  완료
                 </button>
               </form>
             </div>

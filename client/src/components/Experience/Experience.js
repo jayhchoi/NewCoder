@@ -21,7 +21,7 @@ const Experience = ({ experience, onDeleteClick }) => {
             <p className="card-text">
               <Moment format="YYYY/MM/DD">{exp.from}</Moment> -{' '}
               {exp.to === undefined ? (
-                ' Now'
+                ' 현재'
               ) : (
                 <Moment format="YYYY/MM/DD">{exp.to}</Moment>
               )}
@@ -34,7 +34,7 @@ const Experience = ({ experience, onDeleteClick }) => {
 
   return (
     <div>
-      <h4 className="mb-2 text-info">Experience Credentials</h4>
+      <h4 className="mb-2 text-info">경력사항</h4>
       <div className="row my-3">{renderExperience}</div>
     </div>
   );

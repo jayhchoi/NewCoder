@@ -3,67 +3,52 @@ export const profileFields = [
     name: 'handle',
     type: 'text',
     component: 'input',
-    placeholder: '*Profile Handle'
+    label: '* 개인 프로필 페이지 주소',
+    placeholder: '예) CodeShin'
   },
   {
     name: 'status',
     type: 'text',
-    component: 'select',
-    options: [
-      {
-        value: '',
-        label: '*Select Professional Status'
-      },
-      {
-        value: 'developer',
-        label: 'Developer'
-      },
-      {
-        value: 'junior-developer',
-        label: 'Junior Developer'
-      },
-      {
-        value: 'senior-developer',
-        label: 'Senior Developer'
-      }
-    ]
+    component: 'input',
+    label: '* 직업',
+    placeholder: '예) 대학생, 개발자, 디자이너, 프리랜서 등...'
   },
   {
     name: 'company',
     type: 'text',
     component: 'input',
-    placeholder: 'Company'
+    label: '회사'
   },
   {
     name: 'website',
     type: 'text',
     component: 'input',
-    placeholder: 'Website'
+    label: '개인 웹사이트 주소'
   },
   {
     name: 'location',
     type: 'text',
     component: 'input',
-    placeholder: 'Location'
+    label: '거주지역'
   },
   {
     name: 'skills',
     type: 'text',
     component: 'input',
-    placeholder: 'e.g. Django,NodeJS,ReactJS,GraphQL',
-    label: '*Skills in comma separated form'
+    placeholder: '예) Django,NodeJS,ReactJS,GraphQL',
+    label: '*개발언어/기술스택, 스페이스 없이 쉼표로 구분해주세요'
   },
   {
     name: 'githubusername',
     type: 'text',
     component: 'input',
-    placeholder: 'Github Username'
+    label: '깃허브 아이디'
   },
   {
     name: 'bio',
     type: 'text',
     component: 'textarea',
-    placeholder: 'Short Bio of Yourself'
+    label: '자기소개'
   }
 ];
 
@@ -115,43 +100,44 @@ export const experienceFields = [
     name: 'title',
     type: 'text',
     component: 'input',
-    placeholder: '*Title'
+    label: '*직책',
+    placeholder: '예) 주니어 개발자, 프론트엔드 개발자, 디자이너, 마케터'
   },
   {
     name: 'company',
     type: 'text',
     component: 'input',
-    placeholder: '*Company'
+    label: '*회사명'
   },
   {
     name: 'location',
     type: 'text',
     component: 'input',
-    placeholder: 'Location'
+    label: '지역'
   },
   {
     name: 'from',
     type: 'date',
     component: 'input',
-    label: '*From Date'
+    label: '*입사일'
   },
   {
     name: 'to',
     type: 'date',
     component: 'input',
-    label: 'To Date'
+    label: '퇴사일'
   },
   {
     name: 'current',
     type: 'checkbox',
     component: 'input',
-    placeholder: 'Current Job'
+    placeholder: '재직중'
   },
   {
     name: 'description',
     type: 'text',
     component: 'textarea',
-    placeholder: 'Description'
+    placeholder: '추가정보'
   }
 ];
 
@@ -160,42 +146,42 @@ export const educationFields = [
     name: 'school',
     type: 'text',
     component: 'input',
-    placeholder: '*School'
+    label: '*학교(학원)명'
   },
   {
     name: 'degree',
     type: 'text',
     component: 'input',
-    placeholder: '*Degree'
+    label: '*학위(과정)명'
   },
   {
     name: 'fieldofstudy',
     type: 'text',
     component: 'input',
-    placeholder: '*Field of Study'
+    label: '*전공분야'
   },
   {
     name: 'from',
     type: 'date',
     component: 'input',
-    label: '*From Date'
+    label: '*시작일'
   },
   {
     name: 'to',
     type: 'date',
     component: 'input',
-    label: 'To Date'
+    label: '종료일'
   },
   {
     name: 'current',
     type: 'checkbox',
     component: 'input',
-    placeholder: 'Current Education'
+    placeholder: '이수중'
   },
   {
     name: 'description',
     type: 'text',
     component: 'textarea',
-    placeholder: 'Description'
+    label: '추가정보'
   }
 ];

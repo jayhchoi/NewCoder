@@ -52,9 +52,9 @@ class EditProfile extends Component {
               <Link to="/dashboard" className="btn btn-light">
                 Back
               </Link>
-              <h1 className="display-4 text-center">Create Your Profile</h1>
+              <h1 className="display-4 text-center">프로필 수정하기</h1>
               <p className="lead text-center">
-                Let's get some information to make your profile stand out
+                회원님의 최신 프로필을 업데이트 해주세요
               </p>
               <small className="d-block pb-3">* = required fields</small>
               <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
@@ -68,14 +68,14 @@ class EditProfile extends Component {
                     })
                   }
                 >
-                  Add Social Network
+                  SNS 계정 추가하기
                 </button>
                 {this.state.displaySocialInputs
                   ? this.renderSocialFields()
                   : null}
 
                 <button type="submit" className="btn btn-info btn-block mt-4">
-                  Submit
+                  완료
                 </button>
               </form>
             </div>

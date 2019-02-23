@@ -42,37 +42,37 @@ class CreateProfile extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div className="create-profile">
+      <div className="create-profile py-4">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
               <Link to="/dashboard" className="btn btn-light">
                 Back
               </Link>
-              <h1 className="display-4 text-center">Create Your Profile</h1>
+              <h1 className="display-4 text-center">프로필 작성하기</h1>
               <p className="lead text-center">
-                Let's get some information to make your profile stand out
+                회원님의 기본 정보와 간단한 자기소개를 공유해주세요.
               </p>
-              <small className="d-block pb-3">* = required fields</small>
+              <small className="d-block pb-3">* = 필수항목</small>
               <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
                 {this.renderFields()}
                 <button
                   type="button"
-                  className="btn btn-light mb-3"
+                  className="btn btn-primary mb-3"
                   onClick={() =>
                     this.setState({
                       displaySocialInputs: !this.state.displaySocialInputs
                     })
                   }
                 >
-                  Add Social Network
+                  SNS 계정 추가하기
                 </button>
                 {this.state.displaySocialInputs
                   ? this.renderSocialFields()
                   : null}
 
                 <button type="submit" className="btn btn-info btn-block mt-4">
-                  Submit
+                  완료
                 </button>
               </form>
             </div>

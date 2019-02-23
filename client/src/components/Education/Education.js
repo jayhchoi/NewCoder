@@ -21,7 +21,7 @@ const Education = ({ education, onDeleteClick }) => {
             <p className="card-text">
               <Moment format="YYYY/MM/DD">{edu.from}</Moment> -{' '}
               {edu.to === undefined ? (
-                ' Now'
+                ' 현재'
               ) : (
                 <Moment format="YYYY/MM/DD">{edu.to}</Moment>
               )}
@@ -34,7 +34,7 @@ const Education = ({ education, onDeleteClick }) => {
 
   return (
     <div>
-      <h4 className="mb-2 text-info">Education Credentials</h4>
+      <h4 className="mb-2 text-info">교육사항</h4>
       <div className="row my-3">{renderEducation}</div>
     </div>
   );

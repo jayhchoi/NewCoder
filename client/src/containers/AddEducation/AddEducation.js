@@ -41,15 +41,15 @@ class AddEducation extends Component {
               >
                 Back
               </Link>
-              <h1 className="display-4 text-center">Add Education</h1>
+              <h1 className="display-4 text-center">교육사항 추가하기</h1>
               <p className="lead text-center">
-                Add any school, bootcamp, etc that you've attended
+                회원님의 과거 및 현재 교육사항을 추가해주세요
               </p>
-              <small className="d-block pb-3">* = required fields</small>
+              <small className="d-block pb-3">* = 필수항목</small>
               <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
                 {this.renderFields()}
                 <button type="submit" className="btn btn-info btn-block mt-4">
-                  Submit
+                  완료
                 </button>
               </form>
             </div>

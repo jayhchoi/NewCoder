@@ -16,15 +16,13 @@ const ProfileAbout = ({ profile }) => {
       <div className="col-md-12">
         <div className="card card-body bg-light">
           <h3 className="text-center text-info">{firstname}'s Bio</h3>
-          <p className="lead">
+          <p className="p-3">
             {profile.bio ? profile.bio : 'Does not have a bio yet'}
           </p>
           <hr />
           <h3 className="text-center text-info">Skill Set</h3>
           <div className="row">
-            <div className="d-flex flex-wrap justify-content-center align-items-center">
-              {skills}
-            </div>
+            <div className="d-flex flex-wrap">{skills}</div>
           </div>
         </div>
       </div>

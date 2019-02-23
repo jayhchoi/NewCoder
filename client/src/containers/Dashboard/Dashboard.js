@@ -35,10 +35,13 @@ class Dashboard extends Component {
       if (_.isEmpty(profile)) {
         return (
           <div>
-            <p className="lead text-muted">Welcome {user.name}</p>
-            <p>You've not set up your profile yet. Please add some info</p>
+            <p className="lead text-muted">{user.name}님 환영합니다!</p>
+            <p>
+              아직 프로필을 작성하지 않으셨네요. 다른 회원분들과 더 원활한
+              소통을 위해서 꼭 프로필을 작성해 주세요.
+            </p>
             <Link to="/create-profile" className="btn btn-lg btn-info">
-              Create Profile
+              프로필 작성하기
             </Link>
           </div>
         );
@@ -46,14 +49,13 @@ class Dashboard extends Component {
         return (
           <div>
             <p className="lead text-muted">
-              Welcome{' '}
               <Link
                 to={{
                   pathname: `/profile/${profile.handle}`,
                   state: { from: this.props.location }
                 }}
               >
-                {user.name}
+                {user.name}님 환영합니다!
               </Link>
             </p>
             <ProfileButtons />
@@ -69,7 +71,7 @@ class Dashboard extends Component {
               onClick={this.onDelete}
               className="d-block btn btn-danger mt-3"
             >
-              Delete my account
+              회원 탈퇴하기
             </button>
           </div>
         );
@@ -83,7 +85,9 @@ class Dashboard extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4">Dashboard</h1>
+              <h1 className="display-4">
+                <i className="fas fa-home" /> Home
+              </h1>
               {this.renderContent()}
             </div>
           </div>

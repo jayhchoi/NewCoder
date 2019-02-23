@@ -14,7 +14,7 @@ class Navbar extends Component {
         <div className="container">
           <span data-toggle="collapse" data-target="#mobile-nav.show">
             <Link className="navbar-brand" to="/">
-              DevConnector
+              뉴코더
             </Link>
           </span>
           <button
@@ -35,7 +35,7 @@ class Navbar extends Component {
               >
                 <Link className="nav-link" to="/profiles">
                   {' '}
-                  Developers
+                  회원목록
                 </Link>
               </li>
             </ul>
@@ -48,8 +48,15 @@ class Navbar extends Component {
                     data-toggle="collapse"
                     data-target="#mobile-nav"
                   >
-                    <Link className="nav-link" to="/feed">
-                      Post Feed
+                    <Link className="nav-link" to="/dashboard">
+                      <img
+                        className="rounded-circle"
+                        src={user.avatar}
+                        alt={user.name}
+                        style={{ width: '25px', marginRight: '5px' }}
+                        title="You must have a gravatar connected to your email to show your profile picture"
+                      />
+                      {user.name}
                     </Link>
                   </li>
                   <li
@@ -57,8 +64,8 @@ class Navbar extends Component {
                     data-toggle="collapse"
                     data-target="#mobile-nav"
                   >
-                    <Link className="nav-link" to="/dashboard">
-                      Dashboard
+                    <Link className="nav-link" to="/feed">
+                      게시판
                     </Link>
                   </li>
                   <li
@@ -71,14 +78,7 @@ class Navbar extends Component {
                       className="nav-link"
                       onClick={this.props.logoutUser}
                     >
-                      <img
-                        className="rounded-circle"
-                        src={user.avatar}
-                        alt={user.name}
-                        style={{ width: '25px', marginRight: '5px' }}
-                        title="You must have a gravatar connected to your email to show your profile picture"
-                      />
-                      Logout
+                      로그아웃
                     </a>
                   </li>
                 </Fragment>
@@ -90,7 +90,7 @@ class Navbar extends Component {
                     data-target="#mobile-nav"
                   >
                     <Link className="nav-link" to="/register">
-                      Sign Up
+                      회원가입
                     </Link>
                   </li>
                   <li
@@ -99,7 +99,7 @@ class Navbar extends Component {
                     data-target="#mobile-nav"
                   >
                     <Link className="nav-link" to="/login">
-                      Login
+                      로그인
                     </Link>
                   </li>
                 </Fragment>

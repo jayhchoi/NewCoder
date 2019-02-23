@@ -59,7 +59,7 @@ class ProfileDetail extends Component {
 
   render() {
     return (
-      <div className="profile-detail">
+      <div className="profile-detail py-4">
         <div className="container">
           <div className="row">
             <div className="col-md-12">{this.renderContent()}</div>

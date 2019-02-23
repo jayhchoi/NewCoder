@@ -39,7 +39,6 @@ import {
 class App extends Component {
   componentWillMount() {
     // Check for local token when refreshed AND keep user logged in
-    console.log('Getting auth info from local storage...');
     if (localStorage.jwt) {
       const token = localStorage.jwt;
       setAuthToken(token);
