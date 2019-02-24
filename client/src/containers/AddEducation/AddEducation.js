@@ -5,12 +5,17 @@ import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 
 import { addEducation } from '../../actions/profiles.action';
+import { setErrors } from '../../actions/errors.action';
 import { educationFields } from '../../constants/profileFormFields';
 
 import history from '../../utils/history';
 import { CustomField } from '../../components';
 
 class AddEducation extends Component {
+  componentDidMount() {
+    this.props.setErrors();
+  }
+
   onSubmit = values => {
     this.props.addEducation(values, history);
   };
@@ -62,7 +67,8 @@ class AddEducation extends Component {
 
 AddEducation.propTypes = {
   errors: PropTypes.object.isRequired,
-  addEducation: PropTypes.func.isRequired
+  addEducation: PropTypes.func.isRequired,
+  setErrors: PropTypes.func.isRequired
 };
 
 AddEducation = reduxForm({
@@ -89,7 +95,8 @@ const mapStateToProps = state => {
 AddEducation = connect(
   mapStateToProps,
   {
-    addEducation
+    addEducation,
+    setErrors
   }
 )(AddEducation);
 

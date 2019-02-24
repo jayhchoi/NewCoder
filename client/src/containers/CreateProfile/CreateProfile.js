@@ -12,11 +12,16 @@ import {
   createProfile,
   getCurrentProfile
 } from '../../actions/profiles.action';
+import { setErrors } from '../../actions/errors.action';
 
 class CreateProfile extends Component {
   state = {
     displaySocialInputs: false
   };
+
+  componentDidMount() {
+    this.props.setErrors();
+  }
 
   onSubmit = values => {
     this.props.createProfile(values, history);
@@ -85,7 +90,8 @@ class CreateProfile extends Component {
 
 CreateProfile.propTypes = {
   errors: PropTypes.object.isRequired,
-  createProfile: PropTypes.func.isRequired
+  createProfile: PropTypes.func.isRequired,
+  setErrors: PropTypes.func.isRequired
 };
 
 CreateProfile = reduxForm({
@@ -102,7 +108,8 @@ CreateProfile = connect(
   mapStateToProps,
   {
     createProfile,
-    getCurrentProfile
+    getCurrentProfile,
+    setErrors
   }
 )(CreateProfile);
 

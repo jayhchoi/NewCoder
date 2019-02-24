@@ -8,7 +8,7 @@ import CustomField from '../../components/CustomField/CustomField';
 import loginFormFields from './loginFormFields';
 
 import { loginUser } from '../../actions/auth.action';
-import { unsetErrors } from '../../actions/errors.action';
+import { setErrors } from '../../actions/errors.action';
 
 class Login extends Component {
   componentWillReceiveProps(nextProps) {
@@ -20,9 +20,9 @@ class Login extends Component {
     }
   }
 
-  // componentWillUnmount() {
-  //   this.props.unsetErrors();
-  // }
+  componentDidMount() {
+    this.props.setErrors();
+  }
 
   onSubmit = values => {
     this.props.loginUser(values, this.props.history);
@@ -64,7 +64,7 @@ class Login extends Component {
 
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
-  unsetErrors: PropTypes.func.isRequired,
+  setErrors: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -80,7 +80,7 @@ Login = connect(
   mapStateToProps,
   {
     loginUser,
-    unsetErrors
+    setErrors
   }
 )(withRouter(Login));
 

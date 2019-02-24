@@ -3,14 +3,14 @@ import { reset } from 'redux-form';
 
 import {
   CREATE_POST,
-  SET_ERRORS,
-  UNSET_ERRORS,
   GET_POSTS,
   FETCHING_POSTS,
   CLEAR_POSTS,
   DELETE_POST,
   GET_POST
 } from './types';
+
+import { setErrors } from './errors.action';
 
 export const createPost = postData => async dispatch => {
   try {
@@ -20,14 +20,8 @@ export const createPost = postData => async dispatch => {
       payload: res.data
     });
     dispatch(reset('postForm'));
-    dispatch({
-      type: UNSET_ERRORS
-    });
   } catch (err) {
-    dispatch({
-      type: SET_ERRORS,
-      payload: err.response.data
-    });
+    dispatch(setErrors(err.response.data));
   }
 };
 
@@ -40,10 +34,7 @@ export const deletePost = postId => async dispatch => {
       payload: postId
     });
   } catch (err) {
-    dispatch({
-      type: SET_ERRORS,
-      payload: err.response.data
-    });
+    dispatch(setErrors(err.response.data));
   }
 };
 
@@ -56,10 +47,7 @@ export const getPosts = () => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    dispatch({
-      type: SET_ERRORS,
-      payload: err.response.data
-    });
+    dispatch(setErrors(err.response.data));
     dispatch({
       type: CLEAR_POSTS
     });
@@ -75,10 +63,7 @@ export const getPost = postId => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    dispatch({
-      type: SET_ERRORS,
-      payload: err.response.data
-    });
+    dispatch(setErrors(err.response.data));
     dispatch({
       type: CLEAR_POSTS
     });
@@ -94,10 +79,7 @@ export const addLike = postId => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    dispatch({
-      type: SET_ERRORS,
-      payload: err.response.data
-    });
+    dispatch(setErrors(err.response.data));
     dispatch({
       type: CLEAR_POSTS
     });
@@ -113,10 +95,7 @@ export const removeLike = postId => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    dispatch({
-      type: SET_ERRORS,
-      payload: err.response.data
-    });
+    dispatch(setErrors(err.response.data));
     dispatch({
       type: CLEAR_POSTS
     });
@@ -131,14 +110,8 @@ export const addComment = (postId, commentData) => async dispatch => {
       payload: res.data // This is updated post
     });
     dispatch(reset('commentForm'));
-    dispatch({
-      type: UNSET_ERRORS
-    });
   } catch (err) {
-    dispatch({
-      type: SET_ERRORS,
-      payload: err.response.data
-    });
+    dispatch(setErrors(err.response.data));
   }
 };
 
@@ -150,13 +123,7 @@ export const deleteComment = (postId, commentId) => async dispatch => {
       type: GET_POST,
       payload: res.data // This is updated post
     });
-    dispatch({
-      type: UNSET_ERRORS
-    });
   } catch (err) {
-    dispatch({
-      type: SET_ERRORS,
-      payload: err.response.data
-    });
+    dispatch(setErrors(err.response.data));
   }
 };

@@ -12,6 +12,7 @@ import {
   createProfile,
   getCurrentProfile
 } from '../../actions/profiles.action';
+import { setErrors } from '../../actions/errors.action';
 
 class EditProfile extends Component {
   state = {
@@ -20,6 +21,7 @@ class EditProfile extends Component {
 
   componentDidMount() {
     this.props.getCurrentProfile();
+    this.props.setErrors();
   }
 
   onSubmit = values => {
@@ -89,6 +91,7 @@ class EditProfile extends Component {
 EditProfile.propTypes = {
   errors: PropTypes.object.isRequired,
   createProfile: PropTypes.func.isRequired,
+  setErrors: PropTypes.func.isRequired,
   initialValues: PropTypes.object
 };
 
@@ -112,7 +115,8 @@ EditProfile = connect(
   mapStateToProps,
   {
     createProfile,
-    getCurrentProfile
+    getCurrentProfile,
+    setErrors
   }
 )(EditProfile);
 

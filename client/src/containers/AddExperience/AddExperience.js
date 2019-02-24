@@ -5,12 +5,17 @@ import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 
 import { addExperience } from '../../actions/profiles.action';
+import { setErrors } from '../../actions/errors.action';
 import { experienceFields } from '../../constants/profileFormFields';
 
 import history from '../../utils/history';
 import { CustomField } from '../../components';
 
 class AddExperience extends Component {
+  componentDidMount() {
+    this.props.setErrors();
+  }
+
   onSubmit = values => {
     this.props.addExperience(values, history);
   };
@@ -61,7 +66,8 @@ class AddExperience extends Component {
 
 AddExperience.propTypes = {
   errors: PropTypes.object.isRequired,
-  addExperience: PropTypes.func.isRequired
+  addExperience: PropTypes.func.isRequired,
+  setErrors: PropTypes.func.isRequired
 };
 
 AddExperience = reduxForm({
@@ -88,7 +94,8 @@ const mapStateToProps = state => {
 AddExperience = connect(
   mapStateToProps,
   {
-    addExperience
+    addExperience,
+    setErrors
   }
 )(AddExperience);
 

@@ -1,7 +1,8 @@
-import { UNSET_ERRORS } from './types';
+import { SET_ERRORS } from './types';
 
-export const unsetErrors = () => {
+export const setErrors = errors => {
   return {
-    type: UNSET_ERRORS
+    type: SET_ERRORS,
+    payload: errors
   };
 };

@@ -8,7 +8,7 @@ import CustomField from '../../components/CustomField/CustomField';
 import registerFormFields from './registerFormFields';
 
 import { registerUser } from '../../actions/auth.action';
-import { unsetErrors } from '../../actions/errors.action';
+import { setErrors } from '../../actions/errors.action';
 
 class Register extends Component {
   componentWillReceiveProps(nextProps) {
@@ -17,9 +17,9 @@ class Register extends Component {
     }
   }
 
-  // componentWillUnmount() {
-  //   this.props.unsetErrors();
-  // }
+  componentDidMount() {
+    this.props.setErrors();
+  }
 
   onSubmit = values => {
     this.props.registerUser(values, this.props.history);
@@ -63,7 +63,7 @@ class Register extends Component {
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
-  unsetErrors: PropTypes.func.isRequired,
+  setErrors: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -79,7 +79,7 @@ Register = connect(
   mapStateToProps,
   {
     registerUser,
-    unsetErrors
+    setErrors
   }
 )(withRouter(Register));
 
