@@ -63,7 +63,7 @@ class ProfileGithub extends Component {
   render() {
     return (
       <div className="mt-3">
-        <h3 className="text-center text-info mb-4">Latest Github Ropos</h3>
+        <h3 className="text-center text-info mb-4">최신 깃허브 Repo</h3>
         {this.renderRepos()}
       </div>
     );

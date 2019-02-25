@@ -21,10 +21,14 @@ const ProfileHeader = ({ profile }) => {
                 {profile.user.name}
               </h1>
               <p className="lead text-center">
-                {capitalizeFirstChar(profile.status)}{' '}
+                <em>{capitalizeFirstChar(profile.status)} </em>
                 {profile.company ? `@ ${profile.company}` : null}
               </p>
-              {profile.location ? <p>{profile.location}</p> : null}
+              {profile.location ? (
+                <p>
+                  <i className="fas fa-map-marker-alt" /> {profile.location}
+                </p>
+              ) : null}
               <p>
                 {profile.website ? (
                   <a

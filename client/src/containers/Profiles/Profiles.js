@@ -37,7 +37,7 @@ class Profiles extends Component {
 
   render() {
     return (
-      <div className="profiles bg-secondary py-4">
+      <div className="profiles bg-secondary page">
         <div className="container">
           <div className="row">
             <div className="col-md-12">

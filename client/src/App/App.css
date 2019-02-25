@@ -4,6 +4,11 @@
   height: 100vh;
 }
 
+.page {
+  padding-bottom: 70px;
+  padding-top: 40px;
+}
+
 img {
   width: 100%;
 }
