@@ -1,12 +1,10 @@
 .App {
-  padding-bottom: 70px;
-  padding-top: 50px;
-  height: 100vh;
+  padding-top: 56px;
 }
 
 .page {
-  padding-bottom: 70px;
-  padding-top: 40px;
+  padding: 40px 0;
+  min-height: 87vh;
 }
 
 img {
@@ -16,10 +14,6 @@ img {
 .devicon {
   font-size: 3em;
   padding: 0 5px 0 0;
-}
-
-.profiles {
-  height: 100vh;
 }
 
 .profile .card {
@@ -49,7 +43,6 @@ img {
   background: url('../img/showcase.jpg') no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
 }
 
 .landing-inner {

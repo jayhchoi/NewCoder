@@ -20,7 +20,8 @@ export default (state = initialState, action) => {
         profiles: !action.payload
           ? {}
           : { [action.payload._id]: action.payload }, // single profile
-        isFetching: false
+        isFetching: false,
+        profile: { ...action.payload, ...action.payload.social }
       };
     case GET_PROFILES:
       return {

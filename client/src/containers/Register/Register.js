@@ -38,18 +38,18 @@ class Register extends Component {
 
     return (
       <div>
-        <div className="register py-4">
+        <div className="register py-4 page">
           <div className="container">
             <div className="row">
               <div className="col-md-8 m-auto">
-                <h1 className="display-4 text-center">Sign Up</h1>
+                <h1 className="display-4 text-center">회원가입</h1>
                 <p className="lead text-center">
-                  Create your DevConnector account
+                  뉴코더에 가입하고 함께 코딩하세요!
                 </p>
                 <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
                   {this.renderFields()}
                   <button type="submit" className="btn btn-info btn-block mt-4">
-                    Submit
+                    확인
                   </button>
                 </form>
               </div>

@@ -3,12 +3,12 @@ export default [
     name: 'email',
     type: 'email',
     component: 'input',
-    placeholder: 'Email'
+    placeholder: '이메일'
   },
   {
     name: 'password',
     type: 'password',
     component: 'input',
-    placeholder: 'Password'
+    placeholder: '비밀번호'
   }
 ];

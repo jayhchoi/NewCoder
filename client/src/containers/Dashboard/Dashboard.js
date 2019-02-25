@@ -81,7 +81,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="dashboard py-4">
+      <div className="dashboard py-4 page">
         <div className="container">
           <div className="row">
             <div className="col-md-12">

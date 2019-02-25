@@ -47,7 +47,7 @@ class CreateProfile extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div className="create-profile py-4">
+      <div className="create-profile py-4 page">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
