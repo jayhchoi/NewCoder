@@ -22,7 +22,7 @@ class Profiles extends Component {
       return <Spinner />;
     } else {
       if (_.isEmpty(profiles)) {
-        return <p className="lead">There's no profile</p>;
+        return <p className="lead">추가된 프로필이 없습니다.</p>;
       } else {
         return (
           <div className="row">
@@ -42,10 +42,10 @@ class Profiles extends Component {
           <div className="row">
             <div className="col-md-12">
               <h1 className="display-4 text-center text-white">
-                Developer Profiles
+                뉴코더 회원목록
               </h1>
               <p className="lead text-center text-white">
-                Browse and connect with developers
+                다른 회원들의 프로필을 확인해 보세요
               </p>
               {this.renderContent()}
             </div>

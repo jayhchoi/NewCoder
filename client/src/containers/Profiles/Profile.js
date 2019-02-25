@@ -23,20 +23,50 @@ const Profile = ({ profile }) => {
           alt="..."
         />
         <div className="card-body">
-          <h5 className="card-title mb-1">{profile.user.name}</h5>
+          <p className="card-text mb-2">
+            <span className="card-title h5 mb-2">{profile.user.name}</span>
+            {!profile.location ? null : (
+              <span className="float-right">
+                <i className="fas fa-map-marker-alt" /> {profile.location}
+              </span>
+            )}
+          </p>
           <p className="card-text">
-            {profile.status} <span>at {profile.company}</span> <br />
-            {!profile.location ? null : <span>@{profile.location}</span>} <br />
+            <em>{profile.status}</em>
+            {profile.company ? (
+              <span className="float-right">
+                <i className="fas fa-building" /> {profile.company}
+              </span>
+            ) : null}
           </p>
           <hr />
-          <h6>Skill Set</h6>
-          {profile.skills.slice(0, 4).map((skill, index) => {
-            return (
-              <span key={index} className="badge badge-primary text-white mr-1">
-                {skill}
-              </span>
-            );
-          })}
+          <div>
+            <h6>기술스택</h6>
+            {profile.skills.slice(0, 4).map((skill, index) => {
+              return (
+                <span
+                  key={index}
+                  className="badge badge-primary text-white mr-1"
+                >
+                  {skill}
+                </span>
+              );
+            })}
+          </div>
+          <hr />
+          <div>
+            <h6>관심분야</h6>
+            {profile.skills.slice(0, 4).map((skill, index) => {
+              return (
+                <span
+                  key={index}
+                  className="badge badge-secondary text-white mr-1"
+                >
+                  {skill}
+                </span>
+              );
+            })}
+          </div>
           <Link
             to={{
               pathname: `/profile/${profile.handle}`,
@@ -44,7 +74,7 @@ const Profile = ({ profile }) => {
             }}
             className="btn btn-info btn-block mt-2"
           >
-            View Profile
+            자세히 보기
           </Link>
         </div>
       </div>

@@ -1,6 +1,7 @@
 .App {
   padding-bottom: 70px;
   padding-top: 50px;
+  height: 100vh;
 }
 
 img {
@@ -10,6 +11,10 @@ img {
 .devicon {
   font-size: 3em;
   padding: 0 5px 0 0;
+}
+
+.profiles {
+  height: 100vh;
 }
 
 .profile .card {
