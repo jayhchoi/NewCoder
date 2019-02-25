@@ -44,7 +44,7 @@ class AddEducation extends Component {
                 }
                 className="btn btn-light"
               >
-                Back
+                뒤로
               </Link>
               <h1 className="display-4 text-center">교육사항 추가하기</h1>
               <p className="lead text-center">

@@ -52,7 +52,7 @@ class EditProfile extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <Link to="/dashboard" className="btn btn-light">
-                Back
+                뒤로
               </Link>
               <h1 className="display-4 text-center">프로필 수정하기</h1>
               <p className="lead text-center">

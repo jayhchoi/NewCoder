@@ -27,20 +27,18 @@ class CommentForm extends Component {
     return (
       <div className="post-form mb-3">
         <div className="card card-info">
-          <div className="card-header bg-info text-white p-2">
-            Say Somthing...
-          </div>
+          <div className="card-header bg-info text-white p-2">댓글 달기</div>
           <div className="card-body p-3">
             <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
               <CustomField
                 type="text"
                 component="textarea"
                 name="text"
-                placeholder="Add a comment"
+                placeholder="댓글을 달아주세요"
                 errors={errors}
               />
               <button type="submit" className="btn btn-dark float-right">
-                Submit
+                제출
               </button>
             </form>
           </div>

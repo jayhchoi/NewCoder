@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -74,6 +75,16 @@ class PostDetail extends Component {
                 <Spinner />
               ) : (
                 <Fragment>
+                  <Link
+                    to={
+                      this.props.location.state
+                        ? this.props.location.state.from
+                        : '/feed'
+                    }
+                    className="btn btn-light mb-3"
+                  >
+                    뒤로
+                  </Link>
                   {this.renderPost()}
                   <CommentForm postId={post._id} />
                   {this.renderComments()}

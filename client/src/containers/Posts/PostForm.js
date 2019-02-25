@@ -26,7 +26,7 @@ class PostForm extends Component {
       <div className="post-form mb-3">
         <div className="card card-info">
           <div className="card-header bg-info text-white p-2">
-            Say Somthing...
+            게시글 올리기
           </div>
           <div className="card-body p-3">
             <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
@@ -35,12 +35,12 @@ class PostForm extends Component {
                   type="text"
                   component="textarea"
                   name="text"
-                  placeholder="Create a post"
+                  placeholder="유용한 정보, 궁금한 질문, 스터디 모집 등을 자유롭게 게시해 주세요"
                   errors={errors}
                 />
               </div>
               <button type="submit" className="btn btn-dark float-right">
-                Submit
+                제출
               </button>
             </form>
           </div>

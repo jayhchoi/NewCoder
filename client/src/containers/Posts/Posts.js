@@ -54,6 +54,9 @@ class Posts extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 mx-auto">
+              <h1 className="display-4 mb-3">
+                <i class="fas fa-comments" /> 게시판
+              </h1>
               <PostForm />
               {this.renderPosts()}
             </div>

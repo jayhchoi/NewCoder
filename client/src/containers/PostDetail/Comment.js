@@ -14,7 +14,7 @@ const Comment = ({ comment, auth, postId, deleteCommentAction, dispatch }) => {
         <div className="author pl-3" style={{ marginLeft: '64px' }}>
           <span className="mr-2">{comment.name}</span>
           <span className="text-muted">@handle</span>
-          <span className="text-muted float-right">Jan 3</span>
+          <span className="text-muted float-right">9999/99/99</span>
         </div>
         <div className="post-content p-3" style={{ marginLeft: '64px' }}>
           {comment.text}

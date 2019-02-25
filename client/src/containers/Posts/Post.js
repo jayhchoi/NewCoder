@@ -30,7 +30,7 @@ const Post = ({
           <div className="author pl-3" style={{ marginLeft: '64px' }}>
             <span className="mr-2">{post.name}</span>
             <span className="text-muted">@handle</span>
-            <span className="text-muted float-right">Jan 3</span>
+            <span className="text-muted float-right">2019/02/21</span>
           </div>
           <div className="post-content p-3" style={{ marginLeft: '64px' }}>
             {post.text}
@@ -60,7 +60,7 @@ const Post = ({
               </button>
             </div>
             <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
-              Comments
+              댓글
             </Link>
             {post.user === auth.user._id ? (
               <button

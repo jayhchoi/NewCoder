@@ -37,7 +37,7 @@ class ProfileDetail extends Component {
                   to={this.props.location.state.from || '/profiles'}
                   className="btn btn-light mb-3 float-left"
                 >
-                  Back
+                  뒤로
                 </Link>
               </div>
               <div className="col-md-6" />
