@@ -9,6 +9,14 @@ const ProfileAbout = ({ profile }) => {
     );
   });
 
+  const interests = profile.interests.map((interest, index) => {
+    return (
+      <div key={index} className="mr-3 p-2 badge badge-success">
+        <i className="fas fa-thumbtack" /> {interest}
+      </div>
+    );
+  });
+
   return (
     <div className="row mt-3">
       <div className="col-md-12">
@@ -28,7 +36,7 @@ const ProfileAbout = ({ profile }) => {
           <div>
             <h3 className="text-center text-info">관심분야</h3>
             <div className="row">
-              <div className="d-flex flex-wrap mx-auto py-2">{skills}</div>
+              <div className="d-flex flex-wrap mx-auto py-2">{interests}</div>
             </div>
           </div>
         </div>

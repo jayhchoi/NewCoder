@@ -73,6 +73,8 @@ router.post(
       // convert string to array
       if (newProfile.skills.length === 1)
         newProfile.skills = newProfile.skills[0].split(',');
+      if (newProfile.interests.length === 1)
+        newProfile.interests = newProfile.interests[0].split(',');
 
       // Check for profile
       const profile = await Profile.findOne({ user: req.user._id });
