@@ -1,12 +1,5 @@
 export const profileFields = [
   {
-    name: 'handle',
-    type: 'text',
-    component: 'input',
-    label: '* 개인 프로필 페이지 주소',
-    placeholder: '예) CodeShin'
-  },
-  {
     name: 'status',
     type: 'text',
     component: 'input',

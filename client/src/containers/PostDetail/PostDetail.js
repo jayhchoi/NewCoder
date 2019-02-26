@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 import { getPost, deleteComment } from '../../actions/post.action';
+import { getCurrentProfile } from '../../actions/profiles.action';
 import { Spinner } from '../../components';
 
 import Comment from './Comment';
@@ -12,6 +13,7 @@ import CommentForm from './CommentForm';
 
 class PostDetail extends Component {
   componentDidMount() {
+    this.props.getCurrentProfile();
     this.props.getPost(this.props.match.params.id);
   }
 
@@ -21,15 +23,22 @@ class PostDetail extends Component {
     return (
       <div className="card mb-3 shadow bg-light">
         <div className="card-body p-3">
-          <img
-            className="rounded-circle float-left"
-            style={{ height: '64px', width: '64px' }}
-            src={post.avatar}
-            alt=""
-          />
+          <Link
+            to={{
+              pathname: `/profile/${post.user.handle}`,
+              state: { from: this.props.location }
+            }}
+          >
+            <img
+              className="rounded-circle float-left"
+              style={{ height: '64px', width: '64px' }}
+              src={post.user.avatar}
+              alt=""
+            />
+          </Link>
           <div className="author pl-3" style={{ marginLeft: '64px' }}>
-            <span className="mr-2">{post.name}</span>
-            <span className="text-muted">@handle</span>
+            <span className="mr-2">{post.user.name}</span>
+            <span className="mr-2">@{post.user.handle}</span>
             <span className="text-muted float-right">Jan 3</span>
           </div>
           <div className="post-content p-3" style={{ marginLeft: '64px' }}>
@@ -54,6 +63,7 @@ class PostDetail extends Component {
               postId={_id}
               auth={auth}
               deleteCommentAction={deleteComment}
+              from={this.props.location}
             />
           ))}
         </div>
@@ -65,6 +75,7 @@ class PostDetail extends Component {
 
   render() {
     const { post, isFetching } = this.props;
+    if (this.props.profile.isFetching) return <Spinner />;
 
     return (
       <div className="post page">
@@ -113,7 +124,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     post: state.post.posts[ownProps.match.params.id],
     isFetching: state.post.isFetching,
-    auth: state.auth
+    auth: state.auth,
+    profile: state.profile
   };
 };
 
@@ -121,6 +133,7 @@ export default connect(
   mapStateToProps,
   {
     getPost,
-    deleteComment
+    deleteComment,
+    getCurrentProfile
   }
 )(PostDetail);

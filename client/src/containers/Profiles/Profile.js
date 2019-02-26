@@ -71,7 +71,7 @@ const Profile = ({ profile }) => {
           </div>
           <Link
             to={{
-              pathname: `/profile/${profile.handle}`,
+              pathname: `/profile/${profile.user.handle}`,
               state: { from: { pathname } }
             }}
             className="btn btn-info btn-block mt-2"

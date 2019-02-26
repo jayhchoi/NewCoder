@@ -12,9 +12,9 @@ class CommentForm extends Component {
     const { postId } = this.props;
 
     const newComment = {
-      text: values.text,
-      name: user.name,
-      avatar: user.avatar
+      text: values.text
+      // name: user.name,
+      // avatar: user.avatar
       // user: user._id
     };
 

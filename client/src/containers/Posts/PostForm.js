@@ -8,12 +8,10 @@ import { createPost } from '../../actions/post.action';
 
 class PostForm extends Component {
   onSubmit = values => {
-    const { user } = this.props.auth;
+    // const { user } = this.props.auth;
 
     const newPost = {
-      text: values.text,
-      name: user.name,
-      avatar: user.avatar
+      text: values.text
     };
 
     this.props.createPost(newPost);

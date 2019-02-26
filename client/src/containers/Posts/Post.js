@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 
 const userLikedThis = (likes, user) => {
@@ -24,13 +25,15 @@ const Post = ({
           <img
             className="rounded-circle float-left"
             style={{ height: '64px', width: '64px' }}
-            src={post.avatar}
+            src={post.user.avatar}
             alt=""
           />
           <div className="author pl-3" style={{ marginLeft: '64px' }}>
-            <span className="mr-2">{post.name}</span>
-            <span className="text-muted">@handle</span>
-            <span className="text-muted float-right">2019/02/21</span>
+            <span className="mr-2">{post.user.name}</span>
+            <span className="text-muted">@{post.user.handle}</span>
+            <span className="text-muted float-right">
+              <Moment format="YYYY/MM/DD">{post.created}</Moment>
+            </span>
           </div>
           <div className="post-content p-3" style={{ marginLeft: '64px' }}>
             {post.text}

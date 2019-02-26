@@ -19,18 +19,21 @@ class Landing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Developer Connector</h1>
+                <h1 className="display-3 mb-4">뉴코더</h1>
                 <p className="lead">
                   {' '}
-                  Create a developer profile/portfolio, share posts and get help
-                  from other developers
+                  새롭게 개발에 입문하는 뉴코더들을 위한 소셜네트워크 <br />
+                  <em>
+                    프로필을 작성해서 나를 알리고, 정보를 공유하고, 다른
+                    뉴코더들과 만나세요
+                  </em>
                 </p>
                 <hr />
                 <Link to="/register" className="btn btn-lg btn-info mr-2">
-                  Sign Up
+                  회원가입
                 </Link>
                 <Link to="/login" className="btn btn-lg btn-light">
-                  Login
+                  로그인
                 </Link>
               </div>
             </div>

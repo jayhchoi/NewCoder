@@ -25,8 +25,7 @@ router.get(
   async (req, res) => {
     try {
       const profile = await Profile.findOne({ user: req.user._id }).populate(
-        'user',
-        ['name', 'avatar']
+        'user'
       ); // This 'user' is from Model > 'ref'
 
       if (!profile) {
@@ -67,7 +66,8 @@ router.post(
           youtube: req.body.youtube,
           instagram: req.body.instagram
         },
-        user: req.user._id
+        user: req.user._id,
+        handle: req.user.handle
       });
 
       // convert string to array
@@ -90,13 +90,13 @@ router.post(
       } else {
         // Create a profile
         // Check if handle exists
-        const existingProfile = await Profile.findOne({
-          handle: newProfile.handle
-        });
-        if (existingProfile) {
-          errors.handle = 'That handle already exists';
-          return res.status(400).send(errors);
-        }
+        // const existingProfile = await Profile.findOne({
+        //   handle: newProfile.handle
+        // });
+        // if (existingProfile) {
+        //   errors.handle = 'That handle already exists';
+        //   return res.status(400).send(errors);
+        // }
 
         const savedProfile = await newProfile.save();
         res.send(savedProfile);
@@ -116,7 +116,7 @@ router.get('/handle/:handle', async (req, res) => {
   try {
     const profile = await Profile.findOne({
       handle: req.params.handle
-    }).populate('user', ['name', 'avatar']);
+    }).populate('user');
     const errors = {};
 
     if (!profile) {
@@ -137,7 +137,7 @@ router.get('/user/:user_id', async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.params.user_id
-    }).populate('user', ['name', 'avatar']);
+    }).populate('user');
     const errors = {};
 
     if (!profile) {
@@ -156,7 +156,7 @@ router.get('/user/:user_id', async (req, res) => {
 // @access  Public
 router.get('/all', async (req, res) => {
   try {
-    const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+    const profiles = await Profile.find().populate('user');
     const errors = {};
 
     if (profiles.length === 0) {

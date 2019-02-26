@@ -51,7 +51,7 @@ class Dashboard extends Component {
             <p className="lead text-muted">
               <Link
                 to={{
-                  pathname: `/profile/${profile.handle}`,
+                  pathname: `/profile/${user.handle}`,
                   state: { from: this.props.location }
                 }}
               >
