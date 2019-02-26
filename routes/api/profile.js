@@ -56,7 +56,6 @@ router.post(
       }
 
       // Get fields
-      console.log(req.body);
       const newProfile = new Profile({
         ...req.body,
         social: {
