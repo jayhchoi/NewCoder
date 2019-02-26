@@ -10,12 +10,14 @@ import {
   addLike,
   removeLike
 } from '../../actions/post.action';
+import { setErrors } from '../../actions/errors.action';
 import { Spinner } from '../../components';
 import Post from './Post';
 
 class Posts extends Component {
   componentDidMount() {
     this.props.getPosts();
+    this.props.setErrors();
   }
 
   renderPosts = () => {
@@ -42,6 +44,7 @@ class Posts extends Component {
             deletePostAction={deletePost}
             addLikeAction={addLike}
             removeLikeAction={removeLike}
+            from={this.props.location}
           />
         ));
       }
@@ -91,6 +94,7 @@ export default connect(
     getPosts,
     deletePost,
     addLike,
-    removeLike
+    removeLike,
+    setErrors
   }
 )(Posts);

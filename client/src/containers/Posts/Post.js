@@ -16,18 +16,26 @@ const Post = ({
   auth,
   deletePostAction,
   addLikeAction,
-  removeLikeAction
+  removeLikeAction,
+  from
 }) => {
   return (
     <div className="post">
       <div className="card mb-3">
         <div className="card-body p-3">
-          <img
-            className="rounded-circle float-left"
-            style={{ height: '64px', width: '64px' }}
-            src={post.user.avatar}
-            alt=""
-          />
+          <Link
+            to={{
+              pathname: `/profile/${post.user.handle}`,
+              state: { from }
+            }}
+          >
+            <img
+              className="rounded-circle float-left"
+              style={{ height: '64px', width: '64px' }}
+              src={post.user.avatar}
+              alt=""
+            />
+          </Link>
           <div className="author pl-3" style={{ marginLeft: '64px' }}>
             <span className="mr-2">{post.user.name}</span>
             <span className="text-muted">@{post.user.handle}</span>

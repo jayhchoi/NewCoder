@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import Moment from 'react-moment';
 
 import { getPost, deleteComment } from '../../actions/post.action';
 import { getCurrentProfile } from '../../actions/profiles.action';
+import { setErrors } from '../../actions/errors.action';
 import { Spinner } from '../../components';
 
 import Comment from './Comment';
@@ -15,6 +17,7 @@ class PostDetail extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();
     this.props.getPost(this.props.match.params.id);
+    this.props.setErrors();
   }
 
   renderPost = () => {
@@ -39,7 +42,9 @@ class PostDetail extends Component {
           <div className="author pl-3" style={{ marginLeft: '64px' }}>
             <span className="mr-2">{post.user.name}</span>
             <span className="mr-2">@{post.user.handle}</span>
-            <span className="text-muted float-right">Jan 3</span>
+            <span className="text-muted float-right">
+              <Moment format="YYYY/MM/DD">{post.created}</Moment>
+            </span>
           </div>
           <div className="post-content p-3" style={{ marginLeft: '64px' }}>
             {post.text}
@@ -134,6 +139,7 @@ export default connect(
   {
     getPost,
     deleteComment,
-    getCurrentProfile
+    getCurrentProfile,
+    setErrors
   }
 )(PostDetail);
