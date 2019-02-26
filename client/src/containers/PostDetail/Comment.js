@@ -20,8 +20,8 @@ const Comment = ({ comment, auth, postId, deleteCommentAction, dispatch }) => {
           {comment.text}
         </div>
       </div>
-      <div className="card-footer p-2 text-right">
-        {comment.user === auth.user._id ? (
+      {comment.user === auth.user._id ? (
+        <div className="card-footer p-2 text-right">
           <button
             onClick={() => deleteCommentAction(postId, comment._id)}
             type="button"
@@ -29,8 +29,8 @@ const Comment = ({ comment, auth, postId, deleteCommentAction, dispatch }) => {
           >
             <i className="fas fa-times" />
           </button>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 };

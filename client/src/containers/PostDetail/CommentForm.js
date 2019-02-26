@@ -38,7 +38,7 @@ class CommentForm extends Component {
                 errors={errors}
               />
               <button type="submit" className="btn btn-dark float-right">
-                제출
+                저장
               </button>
             </form>
           </div>

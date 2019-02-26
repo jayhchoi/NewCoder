@@ -19,7 +19,7 @@ class PostDetail extends Component {
     const { post } = this.props;
 
     return (
-      <div className="card mb-3">
+      <div className="card mb-3 shadow bg-light">
         <div className="card-body p-3">
           <img
             className="rounded-circle float-left"
@@ -67,7 +67,7 @@ class PostDetail extends Component {
     const { post, isFetching } = this.props;
 
     return (
-      <div className="post py-4">
+      <div className="post page">
         <div className="container">
           <div className="row">
             <div className="col-md-8 mx-auto">
@@ -75,6 +75,9 @@ class PostDetail extends Component {
                 <Spinner />
               ) : (
                 <Fragment>
+                  <h1 className="display-4 mb-3">
+                    <i className="fas fa-comments" /> 게시판 > 댓글
+                  </h1>
                   <Link
                     to={
                       this.props.location.state
