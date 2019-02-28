@@ -5,12 +5,12 @@ module.exports = validatePostInput = data => {
 
   const { text = '' } = data;
 
-  if (!validator.isLength(text, { min: 10, max: 300 })) {
-    errors.text = 'Text must be between 10 and 300 chars';
-  }
+  // if (!validator.isLength(text, { min: 10, max: 300 })) {
+  //   errors.text = 'Text must be between 10 and 300 chars';
+  // }
 
   if (validator.isEmpty(text)) {
-    errors.text = 'Text field is required';
+    errors.text = '내용을 입력해주세요';
   }
 
   return {

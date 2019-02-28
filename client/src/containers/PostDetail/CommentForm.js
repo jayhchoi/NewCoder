@@ -8,14 +8,10 @@ import { addComment } from '../../actions/post.action';
 
 class CommentForm extends Component {
   onSubmit = values => {
-    const { user } = this.props.auth;
     const { postId } = this.props;
 
     const newComment = {
       text: values.text
-      // name: user.name,
-      // avatar: user.avatar
-      // user: user._id
     };
 
     this.props.addComment(postId, newComment);

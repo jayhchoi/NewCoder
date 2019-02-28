@@ -6,20 +6,20 @@ module.exports = validateProfileInput = data => {
   const { status = '', skills = '', interests = '' } = data;
 
   if (validator.isEmpty(status)) {
-    errors.status = 'Status field is required';
+    errors.status = '직업은 필수 입력값입니다';
   }
 
-  if (typeof skills === String && validator.isEmpty(skills)) {
-    errors.skills = 'Skills field is required';
+  if (skills.length === 0) {
+    errors.skills = '개발언어/기술스택은 필수 입력값입니다';
   }
 
-  if (typeof interests === String && validator.isEmpty(interests)) {
-    errors.interests = 'interests field is required';
+  if (interests.length === 0) {
+    errors.interests = '관심분야는 필수 입력값입니다';
   }
 
   if (data.website) {
     if (!validator.isURL(data.website)) {
-      errors.website = 'Not a valid URL';
+      errors.website = '정상적인 URL을 입력해주세요';
     }
   }
 

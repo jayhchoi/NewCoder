@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { logoutUser } from '../../actions/auth.action';
+import logo from '../../img/newcoder_logo_single.png';
 
 class Navbar extends Component {
   render() {
@@ -12,9 +13,17 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div className="container">
-          <span data-toggle="collapse" data-target="#mobile-nav.show">
-            <Link className="navbar-brand" to="/">
-              뉴코더
+          <span
+            data-toggle="collapse"
+            data-target="#mobile-nav.show"
+            style={{ margin: '0' }}
+          >
+            <Link className="navbar-brand m-0 p-0" to="/">
+              <img
+                src={logo}
+                style={{ width: '120px', margin: '0' }}
+                alt="Not Found"
+              />
             </Link>
           </span>
           <button

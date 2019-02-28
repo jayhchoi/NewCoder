@@ -6,15 +6,15 @@ module.exports = validateExperienceInput = data => {
   const { title = '', company = '', from = '' } = data;
 
   if (validator.isEmpty(title)) {
-    errors.title = 'Title field is required';
+    errors.title = '직책은 필수 입력값입니다';
   }
 
   if (validator.isEmpty(company)) {
-    errors.company = 'Company field is required';
+    errors.company = '회사명은 필수 입력값입니다';
   }
 
   if (validator.isEmpty(from)) {
-    errors.from = 'From date field is required';
+    errors.from = '입사일은 필수 입력값입니다';
   }
 
   return {

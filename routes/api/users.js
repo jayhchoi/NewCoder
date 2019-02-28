@@ -33,7 +33,7 @@ router.post('/register', async (req, res) => {
     const user = await User.findOne({ email });
 
     if (user) {
-      errors.email = 'Email already exists';
+      errors.email = '같은 이메일의 사용자가 이미 존재합니다';
       return res.status(400).send(errors);
     } else {
       // user === null
