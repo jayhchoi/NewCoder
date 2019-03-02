@@ -19,17 +19,14 @@ class ProfileGithub extends Component {
     )
       .then(res => res.json())
       .then(data => {
-        if (typeof data === Array) {
-          this.setState({ repos: data });
-        } else {
-          throw new Error(data.message);
-        }
+        this.setState({ repos: data });
       })
-      .catch(err => console.log(err));
+      .catch();
   }
 
   renderRepos() {
     const { repos } = this.state;
+    if (repos.message) return null;
 
     return repos.map(repo => (
       <div key={repo.id} className="card card-body mb-2">
