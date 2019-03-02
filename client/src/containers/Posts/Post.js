@@ -73,7 +73,7 @@ const Post = ({
             <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
               댓글
             </Link>
-            {post.user === auth.user._id ? (
+            {post.user._id === auth.user._id ? (
               <button
                 onClick={() => deletePostAction(post._id)}
                 type="button"

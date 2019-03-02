@@ -34,7 +34,11 @@ class Posts extends Component {
       return <Spinner />;
     } else {
       if (_.isEmpty(posts)) {
-        return <p className="lead">There's no post</p>;
+        return (
+          <h5 className="text-warning text-center mt-5">
+            게시물을 찾을 수 없습니다.
+          </h5>
+        );
       } else {
         return posts.map(post => (
           <Post
@@ -82,7 +86,7 @@ Posts.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    posts: Object.values(state.post.posts),
+    posts: _.orderBy(state.post.posts, ['_id'], ['desc']), // Convert to array of objects while sorting it desc
     isFetching: state.post.isFetching,
     auth: state.auth
   };

@@ -32,7 +32,7 @@ export default (state = initialState, action) => {
     case FETCHING_PROFILES:
       return { ...state, isFetching: true };
     case CLEAR_PROFILES:
-      return state;
+      return { ...state, isFetching: false };
     default:
       return state;
   }

@@ -26,6 +26,18 @@ class Navbar extends Component {
               />
             </Link>
           </span>
+          <ul className="navbar-nav mr-auto">
+            <li
+              className="nav-item"
+              data-toggle="collapse"
+              data-target="#mobile-nav.show"
+            >
+              <Link className="nav-link" to="/profiles">
+                {' '}
+                회원목록
+              </Link>
+            </li>
+          </ul>
           <button
             className="navbar-toggler"
             type="button"
@@ -36,19 +48,6 @@ class Navbar extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="mobile-nav">
-            <ul className="navbar-nav mr-auto">
-              <li
-                className="nav-item"
-                data-toggle="collapse"
-                data-target="#mobile-nav"
-              >
-                <Link className="nav-link" to="/profiles">
-                  {' '}
-                  회원목록
-                </Link>
-              </li>
-            </ul>
-
             <ul className="navbar-nav ml-auto">
               {isAuthenticated ? (
                 <Fragment>
@@ -62,10 +61,15 @@ class Navbar extends Component {
                         className="rounded-circle"
                         src={user.avatar}
                         alt={user.name}
-                        style={{ width: '25px', marginRight: '5px' }}
-                        title="You must have a gravatar connected to your email to show your profile picture"
+                        style={{ width: '30px', marginRight: '10px' }}
+                        title="https://ko.gravatar.com/ 에서 프로필 이미지를 추가하세요!"
                       />
-                      {user.name}
+                      <span
+                        className="text-info"
+                        style={{ borderBottom: 'solid 1px teal' }}
+                      >
+                        {user.name}
+                      </span>
                     </Link>
                   </li>
                   <li

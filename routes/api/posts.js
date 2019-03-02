@@ -215,7 +215,7 @@ router.delete(
       post.comments.splice(removeIndex, 1);
 
       const updatedPost = await post.save();
-      res.send(updatedPost);
+      res.send(await Post.populate(updatedPost, ['user', 'comments.user']));
     } catch (err) {
       res.status(400).send({ comment: err.message });
     }

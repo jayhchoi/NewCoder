@@ -29,7 +29,14 @@ const ProfileHeader = ({ profile }) => {
                   <i className="fas fa-map-marker-alt" /> {profile.location}
                 </p>
               ) : null}
+              {/* SNS ICONS */}
               <p>
+                <a
+                  className="text-white p-2"
+                  href={`mailto:${profile.user.email}`}
+                >
+                  <i class="fas fa-envelope-open fa-2x" />
+                </a>
                 {profile.website ? (
                   <a
                     className="text-white p-2"
