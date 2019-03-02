@@ -1,8 +1,15 @@
 import React from 'react';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
+// import { connect } from 'react-redux';
 
-const ProfileCredentials = ({ experience, education, location }) => {
+const ProfileCredentials = ({
+  experience,
+  education,
+  location,
+  auth = { user: 'dummy' },
+  profile
+}) => {
   const experiences = experience.map(exp => (
     <li key={exp._id} className="list-group-item mb-1">
       <h4>{exp.company}</h4>
@@ -58,18 +65,20 @@ const ProfileCredentials = ({ experience, education, location }) => {
           {experiences.length > 0 ? (
             experiences
           ) : (
-            <div
-              style={{ border: 'solid rgba(0,0,0,.125) 1px', height: '100%' }}
-            >
-              <Link
-                to={{
-                  pathname: '/add-experience',
-                  state: { from: location }
-                }}
-                className="my-5 d-block"
-              >
-                <p className="text-center">경력사항을 추가하세요</p>
-              </Link>
+            <div style={{ border: 'solid rgba(0,0,0,.125) 1px' }}>
+              {auth.user && auth.user._id === profile.user._id ? (
+                <Link
+                  to={{
+                    pathname: '/add-experience',
+                    state: { from: location }
+                  }}
+                  className="my-5 d-block"
+                >
+                  <p className="text-center">경력사항을 추가하세요</p>
+                </Link>
+              ) : (
+                <p className="text-center">추가된 정보가 없습니다</p>
+              )}
             </div>
           )}
         </ul>
@@ -81,15 +90,19 @@ const ProfileCredentials = ({ experience, education, location }) => {
             educations
           ) : (
             <div style={{ border: 'solid rgba(0,0,0,.125) 1px' }}>
-              <Link
-                to={{
-                  pathname: '/add-education',
-                  state: { from: location }
-                }}
-                className="my-5 d-block"
-              >
-                <p className="text-center">교육사항을 추가하세요</p>
-              </Link>
+              {auth.user && auth.user._id === profile.user._id ? (
+                <Link
+                  to={{
+                    pathname: '/add-education',
+                    state: { from: location }
+                  }}
+                  className="my-5 d-block"
+                >
+                  <p className="text-center">교육사항을 추가하세요</p>
+                </Link>
+              ) : (
+                <p className="text-center">추가된 정보가 없습니다</p>
+              )}
             </div>
           )}
         </ul>
@@ -97,5 +110,12 @@ const ProfileCredentials = ({ experience, education, location }) => {
     </div>
   );
 };
+
+// const mapStateToProps = state => {
+//   return {
+//     user: state.auth.user,
+//     profile: state.profile.profile
+//   };
+// };
 
 export default ProfileCredentials;

@@ -47,6 +47,9 @@ class ProfileDetail extends Component {
             <ProfileCredentials
               education={profile.education}
               experience={profile.experience}
+              location={this.props.location}
+              profile={this.props.auth}
+              auth={this.props.profile.profile}
             />
             {profile.githubusername ? (
               <ProfileGithub username={profile.githubusername} />
@@ -77,7 +80,8 @@ ProfileDetail.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    profile: state.profile
+    profile: state.profile,
+    auth: state.auth
   };
 };
 
