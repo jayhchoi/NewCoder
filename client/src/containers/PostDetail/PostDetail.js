@@ -40,8 +40,7 @@ class PostDetail extends Component {
             />
           </Link>
           <div className="author pl-3" style={{ marginLeft: '64px' }}>
-            <span className="mr-2">{post.user.name}</span>
-            <span className="mr-2">@{post.user.handle}</span>
+            <span className="mr-2 text-info">{post.user.name}</span>
             <span className="text-muted float-right">
               <Moment format="YYYY/MM/DD">{post.created}</Moment>
             </span>

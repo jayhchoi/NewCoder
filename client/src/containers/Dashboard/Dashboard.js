@@ -49,13 +49,15 @@ class Dashboard extends Component {
         return (
           <div>
             <p className="lead text-muted">
+              {user.name}님 환영합니다!
               <Link
                 to={{
                   pathname: `/profile/${user.handle}`,
                   state: { from: this.props.location }
                 }}
+                className="btn btn-outline-primary ml-2"
               >
-                {user.name}님 환영합니다!
+                <i className="fas fa-hand-point-right" /> 내 프로필 보기
               </Link>
             </p>
             <ProfileButtons />
@@ -71,7 +73,7 @@ class Dashboard extends Component {
               onClick={this.onDelete}
               className="d-block btn btn-danger mt-3"
             >
-              회원 탈퇴하기
+              <i className="fas fa-user-slash" /> 회원 탈퇴하기
             </button>
           </div>
         );

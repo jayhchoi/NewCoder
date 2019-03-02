@@ -37,8 +37,7 @@ const Post = ({
             />
           </Link>
           <div className="author pl-3" style={{ marginLeft: '64px' }}>
-            <span className="mr-2">{post.user.name}</span>
-            <span className="text-muted">@{post.user.handle}</span>
+            <span className="mr-2 text-info">{post.user.name}</span>
             <span className="text-muted float-right">
               <Moment format="YYYY/MM/DD">{post.created}</Moment>
             </span>
@@ -71,7 +70,7 @@ const Post = ({
               </button>
             </div>
             <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
-              댓글
+              <i className="fas fa-reply" /> 댓글
             </Link>
             {post.user._id === auth.user._id ? (
               <button
@@ -79,7 +78,7 @@ const Post = ({
                 type="button"
                 className="btn btn-danger mr-1"
               >
-                <i className="fas fa-times" />
+                <i className="fas fa-trash" />
               </button>
             ) : null}
           </div>

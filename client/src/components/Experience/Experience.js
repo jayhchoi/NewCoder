@@ -35,7 +35,15 @@ const Experience = ({ experience, onDeleteClick }) => {
   return (
     <div>
       <h4 className="mb-2 text-info">경력사항</h4>
-      <div className="row my-3">{renderExperience}</div>
+      <div className="row my-3">
+        {experience.length === 0 ? (
+          <small className="ml-3">
+            경력 관련 정보를 추가해 프로필을 완성하세요
+          </small>
+        ) : (
+          renderExperience
+        )}
+      </div>
     </div>
   );
 };

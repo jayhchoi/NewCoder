@@ -23,7 +23,9 @@ class CommentForm extends Component {
     return (
       <div className="post-form mb-3">
         <div className="card card-info">
-          <div className="card-header bg-info text-white p-2">댓글 달기</div>
+          <div className="card-header bg-info text-white p-2">
+            <i className="fas fa-pen-alt" /> 댓글 달기
+          </div>
           <div className="card-body p-3">
             <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
               <CustomField
@@ -34,7 +36,7 @@ class CommentForm extends Component {
                 errors={errors}
               />
               <button type="submit" className="btn btn-dark float-right">
-                저장
+                <i className="fas fa-check" /> 저장
               </button>
             </form>
           </div>

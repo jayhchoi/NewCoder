@@ -28,8 +28,7 @@ const Comment = ({
           />
         </Link>
         <div className="author pl-3" style={{ marginLeft: '64px' }}>
-          <span className="mr-2">{comment.user.name}</span>
-          <span className="text-muted">@{comment.user.handle}</span>
+          <span className="mr-2 text-info">{comment.user.name}</span>
           <span className="text-muted float-right">
             <Moment format="YYYY/MM/DD">{comment.created}</Moment>
           </span>
@@ -45,7 +44,7 @@ const Comment = ({
             type="button"
             className="btn btn-danger mr-1"
           >
-            <i className="fas fa-times" />
+            <i className="fas fa-trash" />
           </button>
         </div>
       ) : null}

@@ -35,7 +35,7 @@ const ProfileHeader = ({ profile }) => {
                   className="text-white p-2"
                   href={`mailto:${profile.user.email}`}
                 >
-                  <i class="fas fa-envelope-open fa-2x" />
+                  <i className="fas fa-envelope-open fa-2x" />
                 </a>
                 {profile.website ? (
                   <a

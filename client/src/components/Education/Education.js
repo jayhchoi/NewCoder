@@ -35,7 +35,15 @@ const Education = ({ education, onDeleteClick }) => {
   return (
     <div>
       <h4 className="mb-2 text-info">교육사항</h4>
-      <div className="row my-3">{renderEducation}</div>
+      <div className="row my-3">
+        {education.length === 0 ? (
+          <small className="ml-3">
+            교육 관련 정보를 추가해 프로필을 완성하세요
+          </small>
+        ) : (
+          renderEducation
+        )}
+      </div>
     </div>
   );
 };
