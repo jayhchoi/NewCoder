@@ -69,12 +69,12 @@ class Dashboard extends Component {
               education={profile.education}
               onDeleteClick={this.props.deleteEducation}
             />
-            <button
+            {/* <button
               onClick={this.onDelete}
               className="d-block btn btn-danger mt-3"
             >
               <i className="fas fa-user-slash" /> 회원 탈퇴하기
-            </button>
+            </button> */}
           </div>
         );
       }
