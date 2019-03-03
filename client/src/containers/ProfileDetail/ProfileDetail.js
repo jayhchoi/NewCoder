@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-import { Spinner } from '../../components';
+import { Spinner, BackButton } from '../../components';
 import { getProfileByHandle } from '../../actions/profiles.action';
 
 import ProfileHeader from './ProfileHeader';
@@ -33,14 +32,11 @@ class ProfileDetail extends Component {
           <div>
             <div className="row">
               <div className="col-md-6">
-                <Link
-                  to={_.get(this.props.location.state, 'from', '/profiles')}
-                  className="btn btn-light mb-3 float-left"
-                >
-                  뒤로
-                </Link>
+                <BackButton
+                  state={this.props.location.state}
+                  defaultTo="/profiles"
+                />
               </div>
-              <div className="col-md-6" />
             </div>
             <ProfileHeader profile={profile} />
             <ProfileAbout profile={profile} />

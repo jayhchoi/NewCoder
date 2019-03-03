@@ -8,7 +8,7 @@ import Moment from 'react-moment';
 import { getPost, deleteComment } from '../../actions/post.action';
 import { getCurrentProfile } from '../../actions/profiles.action';
 import { setErrors } from '../../actions/errors.action';
-import { Spinner } from '../../components';
+import { Spinner, BackButton } from '../../components';
 
 import Comment from './Comment';
 import CommentForm from './CommentForm';
@@ -93,16 +93,10 @@ class PostDetail extends Component {
                   <h1 className="display-4 mb-3">
                     <i className="fas fa-comments" /> 게시판 > 댓글
                   </h1>
-                  <Link
-                    to={
-                      this.props.location.state
-                        ? this.props.location.state.from
-                        : '/feed'
-                    }
-                    className="btn btn-light mb-3"
-                  >
-                    뒤로
-                  </Link>
+                  <BackButton
+                    state={this.props.location.state}
+                    defaultTo="/feed"
+                  />
                   {this.renderPost()}
                   <CommentForm postId={post._id} />
                   {this.renderComments()}
