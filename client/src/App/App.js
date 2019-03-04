@@ -57,23 +57,25 @@ class App extends Component {
   }
 
   render() {
+    const titleText = 'NewCoder | 코딩 새내기들의 소셜네트워크';
+    const descriptionText =
+      '코딩은 재밌습니다. 하지만 혼자 가면 멀리가기 어렵습니다. 함께 더 멀리 갈 수 있게 뉴코더 커뮤니티에 참여하세요';
+
     return (
       <Router history={history}>
         <div className="App">
           <Helmet>
-            <title>NewCoder | Keep Coding</title>
-            <link rel="canonical" href="http://newcoder.org" />
-            <meta name="description" content="코딩 입문자들을 위한 커뮤니티" />
+            <link rel="canonical" href="https://www.newcoder.org" />
+            <title>{titleText}</title>
+            <meta name="title" content={titleText} />
+            <meta name="description" content={descriptionText} />
             <meta
               name="keywords"
-              content="뉴코더, NewCoder, 코딩, 개발자, 커뮤니티"
+              content="뉴코더, NewCoder, 코딩, 개발자, 소셜네트워크"
             />
-            <meta
-              property="og:title"
-              content="NewCoder | 코딩 입문자들을 위한 커뮤니티"
-            />
+            <meta property="og:title" content={titleText} />
             <meta property="og:type" content="website" />
-            <meta property="og:url" content="http://www.newcoder.org" />
+            <meta property="og:url" content="https://www.newcoder.org" />
             <meta property="og:image" content={logo} />
           </Helmet>
           <Navbar />

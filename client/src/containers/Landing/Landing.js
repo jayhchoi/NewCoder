@@ -20,9 +20,7 @@ class Landing extends Component {
             <div className="row">
               <div className="col-md-12 text-center">
                 <h1 className="display-4 mt-5">Keep coding, don't stop</h1>
-                <h5 className="mt-4">
-                  새롭게 코딩에 입문한 뉴코더들을 위한 소셜네트워크
-                </h5>
+                <h5 className="mt-4">코딩 입문자들을 위한 소셜네트워크</h5>
                 <div className="mt-4">
                   <Link to="/register" className="btn btn-lg btn-info mr-2">
                     회원가입
