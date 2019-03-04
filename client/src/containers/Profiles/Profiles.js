@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 
 import { Spinner } from '../../components';
 import { getProfiles } from '../../actions/profiles.action';
@@ -40,6 +41,9 @@ class Profiles extends Component {
   render() {
     return (
       <div className="profiles bg-secondary page">
+        <Helmet>
+          <title>NewCoder | 회원목록</title>
+        </Helmet>
         <div className="container">
           <div className="row">
             <div className="col-md-12">

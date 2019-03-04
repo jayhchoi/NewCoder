@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+
 import { connect } from 'react-redux';
 import PostForm from './PostForm';
 import _ from 'lodash';
@@ -58,6 +60,9 @@ class Posts extends Component {
   render() {
     return (
       <div className="feed page">
+        <Helmet>
+          <title>NewCoder | 게시판</title>
+        </Helmet>
         <div className="container">
           <div className="row">
             <div className="col-md-8 mx-auto">

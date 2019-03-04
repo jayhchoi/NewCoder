@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Router, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 
 // OTHER LIBRARIES
 import jwtDecode from 'jwt-decode';
@@ -16,6 +17,7 @@ import { logoutUser, setCurrentUser } from '../actions/auth.action';
 
 // STYLES
 import './App.css';
+import logo from '../img/newcoder_logo.png';
 
 // COMPONENTS
 import { Navbar, Footer, PrivateRoute, NotFound } from '../components';
@@ -58,6 +60,22 @@ class App extends Component {
     return (
       <Router history={history}>
         <div className="App">
+          <Helmet>
+            <title>NewCoder | Keep Coding</title>
+            <link rel="canonical" href="http://newcoder.org" />
+            <meta name="description" content="코딩 입문자들을 위한 커뮤니티" />
+            <meta
+              name="keywords"
+              content="뉴코더, NewCoder, 코딩, 개발자, 커뮤니티"
+            />
+            <meta
+              property="og:title"
+              content="NewCoder | 코딩 입문자들을 위한 커뮤니티"
+            />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="http://www.newcoder.org" />
+            <meta property="og:image" content={logo} />
+          </Helmet>
           <Navbar />
           <Switch>
             <Route exact path="/" component={Landing} />

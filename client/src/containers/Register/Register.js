@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import CustomField from '../../components/CustomField/CustomField';
 import registerFormFields from './registerFormFields';
@@ -39,6 +40,9 @@ class Register extends Component {
     return (
       <div>
         <div className="register py-4 page">
+          <Helmet>
+            <title>NewCoder | 회원가입</title>
+          </Helmet>
           <div className="container">
             <div className="row">
               <div className="col-md-8 m-auto">
