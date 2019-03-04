@@ -8,8 +8,11 @@ const users = require('./routes/api/users');
 const posts = require('./routes/api/posts');
 const profile = require('./routes/api/profile');
 const passport = require('passport');
+const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 
 const app = express();
+
+app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
 
 // MIDDLEWARES
 app.use(bodyParser.urlencoded({ extended: false })); // This is for easy request from postman?
