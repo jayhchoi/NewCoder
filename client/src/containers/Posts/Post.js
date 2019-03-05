@@ -64,13 +64,16 @@ const Post = ({
               <button
                 onClick={() => removeLikeAction(post._id)}
                 type="button"
-                className="btn btn-light mr-3"
+                className="btn btn-light"
               >
                 <i className="text-secondary fas fa-thumbs-down" />
               </button>
             </div>
             <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
-              <i className="fas fa-reply" /> 댓글
+              <i className="fas fa-reply" /> 댓글{' '}
+              <span className="badge badge-pill badge-light">
+                {post.comments.length}
+              </span>
             </Link>
             {post.user._id === auth.user._id ? (
               <button
