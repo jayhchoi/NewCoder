@@ -3,27 +3,23 @@ const validator = require('validator');
 module.exports = validateProfileInput = data => {
   let errors = {};
 
-  const { handle = '', status = '', skills = '' } = data;
-
-  if (!validator.isLength(handle, { min: 2, max: 40 })) {
-    errors.handle = 'Handle needs to be between 2 and 40 chars';
-  }
-
-  if (validator.isEmpty(handle)) {
-    errors.handle = 'Handle field is required';
-  }
+  const { status = '', skills = '', interests = '' } = data;
 
   if (validator.isEmpty(status)) {
-    errors.status = 'Status field is required';
+    errors.status = '직업은 필수 입력값입니다';
   }
 
-  if (typeof skills === String && validator.isEmpty(skills)) {
-    errors.skills = 'Skills field is required';
+  if (skills.length === 0) {
+    errors.skills = '개발언어/기술스택은 필수 입력값입니다';
+  }
+
+  if (interests.length === 0) {
+    errors.interests = '관심분야는 필수 입력값입니다';
   }
 
   if (data.website) {
     if (!validator.isURL(data.website)) {
-      errors.website = 'Not a valid URL';
+      errors.website = '정상적인 URL을 입력해주세요';
     }
   }
 

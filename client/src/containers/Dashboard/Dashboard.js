@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { Helmet } from 'react-helmet';
 
 import {
   getCurrentProfile,
@@ -49,13 +50,15 @@ class Dashboard extends Component {
         return (
           <div>
             <p className="lead text-muted">
+              {user.name}님 환영합니다!
               <Link
                 to={{
-                  pathname: `/profile/${profile.handle}`,
+                  pathname: `/profile/${user.handle}`,
                   state: { from: this.props.location }
                 }}
+                className="btn btn-outline-primary ml-2"
               >
-                {user.name}님 환영합니다!
+                <i className="fas fa-hand-point-right" /> 내 프로필 보기
               </Link>
             </p>
             <ProfileButtons />
@@ -67,12 +70,12 @@ class Dashboard extends Component {
               education={profile.education}
               onDeleteClick={this.props.deleteEducation}
             />
-            <button
+            {/* <button
               onClick={this.onDelete}
               className="d-block btn btn-danger mt-3"
             >
-              회원 탈퇴하기
-            </button>
+              <i className="fas fa-user-slash" /> 회원 탈퇴하기
+            </button> */}
           </div>
         );
       }
@@ -81,12 +84,15 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="dashboard py-4">
+      <div className="dashboard py-4 page">
+        <Helmet>
+          <title>NewCoder | My Home</title>
+        </Helmet>
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <h1 className="display-4">
-                <i className="fas fa-home" /> Home
+                <i className="fas fa-home" /> My Home
               </h1>
               {this.renderContent()}
             </div>

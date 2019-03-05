@@ -8,14 +8,10 @@ import { addComment } from '../../actions/post.action';
 
 class CommentForm extends Component {
   onSubmit = values => {
-    const { user } = this.props.auth;
     const { postId } = this.props;
 
     const newComment = {
-      text: values.text,
-      name: user.name,
-      avatar: user.avatar
-      // user: user._id
+      text: values.text
     };
 
     this.props.addComment(postId, newComment);
@@ -27,7 +23,9 @@ class CommentForm extends Component {
     return (
       <div className="post-form mb-3">
         <div className="card card-info">
-          <div className="card-header bg-info text-white p-2">댓글 달기</div>
+          <div className="card-header bg-info text-white p-2">
+            <i className="fas fa-pen-alt" /> 댓글 달기
+          </div>
           <div className="card-body p-3">
             <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
               <CustomField
@@ -38,7 +36,7 @@ class CommentForm extends Component {
                 errors={errors}
               />
               <button type="submit" className="btn btn-dark float-right">
-                제출
+                <i className="fas fa-check" /> 저장
               </button>
             </form>
           </div>

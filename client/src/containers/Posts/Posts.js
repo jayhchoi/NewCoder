@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+
 import { connect } from 'react-redux';
 import PostForm from './PostForm';
 import _ from 'lodash';
@@ -10,12 +12,14 @@ import {
   addLike,
   removeLike
 } from '../../actions/post.action';
+import { setErrors } from '../../actions/errors.action';
 import { Spinner } from '../../components';
 import Post from './Post';
 
 class Posts extends Component {
   componentDidMount() {
     this.props.getPosts();
+    this.props.setErrors();
   }
 
   renderPosts = () => {
@@ -32,7 +36,11 @@ class Posts extends Component {
       return <Spinner />;
     } else {
       if (_.isEmpty(posts)) {
-        return <p className="lead">There's no post</p>;
+        return (
+          <h5 className="text-warning text-center mt-5">
+            게시물을 찾을 수 없습니다.
+          </h5>
+        );
       } else {
         return posts.map(post => (
           <Post
@@ -42,6 +50,7 @@ class Posts extends Component {
             deletePostAction={deletePost}
             addLikeAction={addLike}
             removeLikeAction={removeLike}
+            from={this.props.location}
           />
         ));
       }
@@ -50,12 +59,15 @@ class Posts extends Component {
 
   render() {
     return (
-      <div className="feed py-4">
+      <div className="feed page">
+        <Helmet>
+          <title>NewCoder | 게시판</title>
+        </Helmet>
         <div className="container">
           <div className="row">
             <div className="col-md-8 mx-auto">
               <h1 className="display-4 mb-3">
-                <i class="fas fa-comments" /> 게시판
+                <i className="fas fa-comments" /> 게시판
               </h1>
               <PostForm />
               {this.renderPosts()}
@@ -79,7 +91,7 @@ Posts.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    posts: Object.values(state.post.posts),
+    posts: _.orderBy(state.post.posts, ['_id'], ['desc']), // Convert to array of objects while sorting it desc
     isFetching: state.post.isFetching,
     auth: state.auth
   };
@@ -91,6 +103,7 @@ export default connect(
     getPosts,
     deletePost,
     addLike,
-    removeLike
+    removeLike,
+    setErrors
   }
 )(Posts);

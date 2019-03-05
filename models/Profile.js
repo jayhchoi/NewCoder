@@ -9,7 +9,6 @@ const profileSchema = new Schema({
   },
   handle: {
     type: String,
-    max: 40,
     required: true
   },
   status: {
@@ -17,6 +16,10 @@ const profileSchema = new Schema({
     required: true
   },
   skills: {
+    type: [String], // Array of strings
+    required: true
+  },
+  interests: {
     type: [String], // Array of strings
     required: true
   },

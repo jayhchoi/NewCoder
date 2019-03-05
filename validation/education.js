@@ -6,19 +6,19 @@ module.exports = validateEducationInput = data => {
   const { school = '', degree = '', fieldofstudy = '', from = '' } = data;
 
   if (validator.isEmpty(school)) {
-    errors.school = 'School field is required';
+    errors.school = '학교(학원)명은 필수 입력값입니다';
   }
 
   if (validator.isEmpty(degree)) {
-    errors.degree = 'Degree field is required';
+    errors.degree = '학위(과정)명은 필수 입력값입니다';
   }
 
   if (validator.isEmpty(fieldofstudy)) {
-    errors.fieldofstudy = 'Field of study field is required';
+    errors.fieldofstudy = '전공분야 필수 입력값입니다';
   }
 
   if (validator.isEmpty(from)) {
-    errors.from = 'From field is required';
+    errors.from = '시작일 필수 입력값입니다';
   }
 
   return {

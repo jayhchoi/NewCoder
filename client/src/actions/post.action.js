@@ -27,8 +27,8 @@ export const createPost = postData => async dispatch => {
 
 export const deletePost = postId => async dispatch => {
   try {
-    const res = await axios.delete(`/api/posts/${postId}`);
-    console.log(res.data);
+    await axios.delete(`/api/posts/${postId}`);
+    console.log(postId);
     dispatch({
       type: DELETE_POST,
       payload: postId
@@ -118,7 +118,6 @@ export const addComment = (postId, commentData) => async dispatch => {
 export const deleteComment = (postId, commentId) => async dispatch => {
   try {
     const res = await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
-    console.log(res.data);
     dispatch({
       type: GET_POST,
       payload: res.data // This is updated post

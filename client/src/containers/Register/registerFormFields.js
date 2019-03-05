@@ -3,24 +3,24 @@ export default [
     name: 'name',
     type: 'text',
     component: 'input',
-    placeholder: 'Full name'
+    placeholder: '이름'
   },
   {
     name: 'email',
     type: 'email',
     component: 'input',
-    placeholder: 'Primary email'
+    placeholder: '이메일 주소'
   },
   {
     name: 'password',
     type: 'password',
     component: 'input',
-    placeholder: 'Password'
+    placeholder: '비밀번호'
   },
   {
     name: 'password2',
     type: 'password',
     component: 'input',
-    placeholder: 'Confirm Password'
+    placeholder: '비밀번호 확인'
   }
 ];

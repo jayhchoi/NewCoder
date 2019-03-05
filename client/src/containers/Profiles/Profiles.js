@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import { Helmet } from 'react-helmet';
 
 import { Spinner } from '../../components';
 import { getProfiles } from '../../actions/profiles.action';
@@ -15,14 +15,17 @@ class Profiles extends Component {
   renderContent() {
     let { profiles, isFetching } = this.props.profile;
 
-    // convert object to array
     profiles = Object.values(profiles);
 
     if (isFetching) {
       return <Spinner />;
     } else {
-      if (_.isEmpty(profiles)) {
-        return <p className="lead">추가된 프로필이 없습니다.</p>;
+      if (profiles.length === 0) {
+        return (
+          <h5 className="text-warning text-center mt-5">
+            프로필을 찾을 수 없습니다.
+          </h5>
+        );
       } else {
         return (
           <div className="row">
@@ -38,6 +41,9 @@ class Profiles extends Component {
   render() {
     return (
       <div className="profiles bg-secondary page">
+        <Helmet>
+          <title>NewCoder | 회원목록</title>
+        </Helmet>
         <div className="container">
           <div className="row">
             <div className="col-md-12">

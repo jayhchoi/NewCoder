@@ -1,12 +1,5 @@
 export const profileFields = [
   {
-    name: 'handle',
-    type: 'text',
-    component: 'input',
-    label: '* 개인 프로필 페이지 주소',
-    placeholder: '예) CodeShin'
-  },
-  {
     name: 'status',
     type: 'text',
     component: 'input',
@@ -37,6 +30,13 @@ export const profileFields = [
     component: 'input',
     placeholder: '예) Django,NodeJS,ReactJS,GraphQL',
     label: '*개발언어/기술스택, 스페이스 없이 쉼표로 구분해주세요'
+  },
+  {
+    name: 'interests',
+    type: 'text',
+    component: 'input',
+    placeholder: '예) 웹,모바일,퀀트,데이터,AI',
+    label: '*관심분야, 스페이스 없이 쉼표로 구분해주세요'
   },
   {
     name: 'githubusername',

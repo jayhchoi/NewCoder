@@ -3,8 +3,16 @@ import React from 'react';
 const ProfileAbout = ({ profile }) => {
   const skills = profile.skills.map((skill, index) => {
     return (
-      <div key={index} className="mr-3 p-2 badge badge-primary">
+      <div key={index} className="mr-3 my-1 p-2 badge badge-primary">
         <i className="fas fa-code" /> {skill}
+      </div>
+    );
+  });
+
+  const interests = profile.interests.map((interest, index) => {
+    return (
+      <div key={index} className="mr-3 my-1 p-2 badge badge-success">
+        <i className="fas fa-thumbtack" /> {interest}
       </div>
     );
   });
@@ -21,14 +29,18 @@ const ProfileAbout = ({ profile }) => {
           <div>
             <h3 className="text-center text-info">기술스택</h3>
             <div className="row">
-              <div className="d-flex flex-wrap mx-auto py-2">{skills}</div>
+              <div className="d-flex mx-auto flex-wrap py-2 justify-content-center">
+                {skills}
+              </div>
             </div>
           </div>
           <hr />
           <div>
             <h3 className="text-center text-info">관심분야</h3>
             <div className="row">
-              <div className="d-flex flex-wrap mx-auto py-2">{skills}</div>
+              <div className="d-flex mx-auto flex-wrap py-2 justify-content-center">
+                {interests}
+              </div>
             </div>
           </div>
         </div>

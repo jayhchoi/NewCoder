@@ -1,12 +1,10 @@
 .App {
-  padding-bottom: 70px;
-  padding-top: 50px;
-  height: 100vh;
+  padding-top: 56px;
 }
 
 .page {
-  padding-bottom: 70px;
-  padding-top: 40px;
+  padding: 40px 0;
+  min-height: 87vh;
 }
 
 img {
@@ -16,10 +14,6 @@ img {
 .devicon {
   font-size: 3em;
   padding: 0 5px 0 0;
-}
-
-.profiles {
-  height: 100vh;
 }
 
 .profile .card {
@@ -46,10 +40,9 @@ img {
 
 .landing {
   position: relative;
-  background: url('../img/showcase.jpg') no-repeat;
+  background: url('../img/landing-background.jpg') no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
 }
 
 .landing-inner {
@@ -57,7 +50,7 @@ img {
 }
 
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   position: absolute;
   top: 0;
   left: 0;
@@ -76,4 +69,18 @@ img {
 
 .form-control::placeholder {
   color: #bbb !important;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 2.5rem !important;
+  }
+
+  .form-control-lg {
+    font-size: 1rem;
+  }
+
+  .author {
+    font-weight: bold;
+  }
 }

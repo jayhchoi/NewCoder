@@ -17,11 +17,8 @@ export default (state = initialState, action) => {
     case CREATE_POST:
       return {
         ...state,
-        posts: _.orderBy(
-          { ...state.posts, [action.payload._id]: action.payload },
-          ['_id'],
-          ['desc']
-        ),
+        posts: { ...state.posts, [action.payload._id]: action.payload },
+
         isFetching: false
       };
     case DELETE_POST:

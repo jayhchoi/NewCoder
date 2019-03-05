@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Router, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 
 // OTHER LIBRARIES
 import jwtDecode from 'jwt-decode';
@@ -16,6 +17,7 @@ import { logoutUser, setCurrentUser } from '../actions/auth.action';
 
 // STYLES
 import './App.css';
+import logo from '../img/newcoder_logo.png';
 
 // COMPONENTS
 import { Navbar, Footer, PrivateRoute, NotFound } from '../components';
@@ -55,9 +57,27 @@ class App extends Component {
   }
 
   render() {
+    const titleText = 'NewCoder | 코딩 새내기들의 소셜네트워크';
+    const descriptionText =
+      '코딩은 재밌습니다. 하지만 혼자 가면 멀리가기 어렵습니다. 함께 더 멀리 갈 수 있게 뉴코더 커뮤니티에 참여하세요';
+
     return (
       <Router history={history}>
         <div className="App">
+          <Helmet>
+            <link rel="canonical" href="https://www.newcoder.org" />
+            <title>{titleText}</title>
+            <meta name="title" content={titleText} />
+            <meta name="description" content={descriptionText} />
+            <meta
+              name="keywords"
+              content="뉴코더, NewCoder, 코딩, 개발자, 소셜네트워크"
+            />
+            <meta property="og:title" content={titleText} />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://www.newcoder.org" />
+            <meta property="og:image" content={logo} />
+          </Helmet>
           <Navbar />
           <Switch>
             <Route exact path="/" component={Landing} />

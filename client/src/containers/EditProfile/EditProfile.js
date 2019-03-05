@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import history from '../../utils/history';
 
-import { CustomField } from '../../components';
+import { CustomField, Spinner, BackButton } from '../../components';
 import { profileFields, socialFields } from '../../constants/profileFormFields';
 import {
   createProfile,
@@ -45,20 +44,28 @@ class EditProfile extends Component {
   }
 
   render() {
+    if (
+      this.props.profile.isFetching ||
+      Object.keys(this.props.profile.profiles).length === 0
+    )
+      return <Spinner />;
+
     const { handleSubmit } = this.props;
     return (
-      <div className="create-profile py-4">
+      <div className="create-profile py-4 page">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <Link to="/dashboard" className="btn btn-light">
-                뒤로
-              </Link>
+              <BackButton
+                state={this.props.location.state}
+                defaultTo="/dashboard"
+              />
+
               <h1 className="display-4 text-center">프로필 수정하기</h1>
               <p className="lead text-center">
                 회원님의 최신 프로필을 업데이트 해주세요
               </p>
-              <small className="d-block pb-3">* = required fields</small>
+              <small className="d-block pb-3">* = 필수항목</small>
               <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
                 {this.renderFields()}
                 <button
@@ -96,18 +103,15 @@ EditProfile.propTypes = {
 };
 
 EditProfile = reduxForm({
-  form: 'profileForm'
+  form: 'profileForm',
+  enableReinitialize: true
 })(EditProfile);
 
 const mapStateToProps = state => {
-  const profile = Object.values(state.profile.profiles)[0];
-
   return {
     errors: state.errors,
-    initialValues: {
-      ...profile,
-      ...profile.social
-    }
+    profile: state.profile,
+    initialValues: state.profile.profile
   };
 };
 

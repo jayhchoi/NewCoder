@@ -11,17 +11,9 @@ const postSchema = new Schema({
     type: String,
     required: true
   },
-  name: {
-    type: String,
-    required: true
-  },
-  avatar: {
-    type: String,
-    required: true
-  },
-  // Optional
-  updated: {
-    type: Date
+  created: {
+    type: Date,
+    default: Date.now
   },
   likes: [
     {
@@ -42,13 +34,9 @@ const postSchema = new Schema({
         type: String,
         required: true
       },
-      name: {
-        type: String,
-        required: true
-      },
-      avatar: {
-        type: String,
-        required: true
+      created: {
+        type: Date,
+        default: Date.now
       }
     }
   ]

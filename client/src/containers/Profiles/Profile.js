@@ -12,7 +12,9 @@ const Profile = ({ profile }) => {
       <div className="card">
         <div className="card-img-wrapper">
           <img
-            src="https://source.unsplash.com/random"
+            src={`https://source.unsplash.com/random/?coding,computer,python,java,javascript,programming?${
+              profile._id
+            }?300x100`}
             className="card-img-top"
             alt="..."
           />
@@ -56,20 +58,20 @@ const Profile = ({ profile }) => {
           <hr />
           <div>
             <h6>관심분야</h6>
-            {profile.skills.slice(0, 4).map((skill, index) => {
+            {profile.interests.slice(0, 4).map((interest, index) => {
               return (
                 <span
                   key={index}
-                  className="badge badge-secondary text-white mr-1"
+                  className="badge badge-success text-white mr-1"
                 >
-                  {skill}
+                  {interest}
                 </span>
               );
             })}
           </div>
           <Link
             to={{
-              pathname: `/profile/${profile.handle}`,
+              pathname: `/profile/${profile.user.handle}`,
               state: { from: { pathname } }
             }}
             className="btn btn-info btn-block mt-2"

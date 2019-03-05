@@ -16,7 +16,10 @@ router.get('/test', (req, res) => res.send({ msg: 'Posts routes works' }));
 // @access  Public
 router.get('/', async (req, res) => {
   try {
-    const posts = await Post.find({}).sort({ _id: -1 });
+    const posts = await Post.find()
+      .populate('user')
+      .populate('comments.user')
+      .sort({ _id: -1 });
     res.send(posts);
   } catch (err) {
     res.status(404).send({ post: err.message });
@@ -30,7 +33,9 @@ router.get('/:id', async (req, res) => {
   const id = req.params.id;
 
   try {
-    const post = await Post.findById(id); // This returns null when found nothing
+    const post = await Post.findById(id)
+      .populate('user')
+      .populate('comments.user'); // This returns null when found nothing
     if (!post) throw Error('Post not found by the ID');
     res.send(post);
   } catch (err) {
@@ -56,7 +61,7 @@ router.post(
 
     try {
       const post = await newPost.save();
-      res.send(post);
+      res.send(await Post.populate(post, 'user'));
     } catch (err) {
       res.status(400).send({ post: err.message });
     }
@@ -164,14 +169,17 @@ router.post(
 
       const newComment = {
         text: req.body.text,
-        name: req.body.name,
-        avatar: req.body.avatar,
         user: req.user._id
       };
 
       post.comments.unshift(newComment);
       const updatedPost = await post.save();
-      res.send(updatedPost);
+      const populatedPost = await Post.populate(updatedPost, [
+        'user',
+        'comments.user'
+      ]);
+
+      res.send(populatedPost);
     } catch (err) {
       res.status(400).send({ comment: err.message });
     }
@@ -207,7 +215,7 @@ router.delete(
       post.comments.splice(removeIndex, 1);
 
       const updatedPost = await post.save();
-      res.send(updatedPost);
+      res.send(await Post.populate(updatedPost, ['user', 'comments.user']));
     } catch (err) {
       res.status(400).send({ comment: err.message });
     }

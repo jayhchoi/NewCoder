@@ -8,12 +8,10 @@ import { createPost } from '../../actions/post.action';
 
 class PostForm extends Component {
   onSubmit = values => {
-    const { user } = this.props.auth;
+    // const { user } = this.props.auth;
 
     const newPost = {
-      text: values.text,
-      name: user.name,
-      avatar: user.avatar
+      text: values.text
     };
 
     this.props.createPost(newPost);
@@ -26,7 +24,7 @@ class PostForm extends Component {
       <div className="post-form mb-3">
         <div className="card card-info">
           <div className="card-header bg-info text-white p-2">
-            게시글 올리기
+            <i className="fas fa-pen-alt" /> 게시글 올리기
           </div>
           <div className="card-body p-3">
             <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
@@ -40,7 +38,7 @@ class PostForm extends Component {
                 />
               </div>
               <button type="submit" className="btn btn-dark float-right">
-                제출
+                <i className="fas fa-check" /> 저장
               </button>
             </form>
           </div>

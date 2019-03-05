@@ -6,3 +6,4 @@ export { default as PrivateRoute } from './PrivateRoute/PrivateRoute';
 export { default as Experience } from './Experience/Experience';
 export { default as Education } from './Education/Education';
 export { default as NotFound } from './NotFound/NotFound';
+export { default as BackButton } from './BackButton/BackButton';

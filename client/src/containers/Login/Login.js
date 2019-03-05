@@ -3,6 +3,7 @@ import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 
 import CustomField from '../../components/CustomField/CustomField';
 import loginFormFields from './loginFormFields';
@@ -40,18 +41,21 @@ class Login extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div className="login py-4">
+      <div className="login py-4 page">
+        <Helmet>
+          <title>NewCoder | 로그인</title>
+        </Helmet>
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Log In</h1>
+              <h1 className="display-4 text-center">로그인</h1>
               <p className="lead text-center">
-                Sign in to your DevConnector account
+                지금 로그인하고 지역모임에 참여하세요!
               </p>
               <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
                 {this.renderFields()}
                 <button type="submit" className="btn btn-info btn-block mt-4">
-                  Confirm
+                  확인
                 </button>
               </form>
             </div>

@@ -13,6 +13,11 @@ const userSchema = new Schema({
     unique: true,
     required: true
   },
+  handle: {
+    type: String,
+    max: 40,
+    required: true
+  },
   password: {
     type: String,
     required: true

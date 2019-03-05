@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
@@ -9,7 +8,7 @@ import { setErrors } from '../../actions/errors.action';
 import { experienceFields } from '../../constants/profileFormFields';
 
 import history from '../../utils/history';
-import { CustomField } from '../../components';
+import { CustomField, BackButton } from '../../components';
 
 class AddExperience extends Component {
   componentDidMount() {
@@ -35,16 +34,10 @@ class AddExperience extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <Link
-                to={
-                  this.props.location.state
-                    ? this.props.location.state.from
-                    : '/dashboard'
-                }
-                className="btn btn-light"
-              >
-                뒤로
-              </Link>
+              <BackButton
+                state={this.props.location.state}
+                defaultTo="/dashboard"
+              />
               <h1 className="display-4 text-center">경력사항 추가하기</h1>
               <p className="lead text-center">
                 회원님의 과거 및 현재 경력사항을 추가해주세요

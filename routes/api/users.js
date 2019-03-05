@@ -33,7 +33,7 @@ router.post('/register', async (req, res) => {
     const user = await User.findOne({ email });
 
     if (user) {
-      errors.email = 'Email already exists';
+      errors.email = '같은 이메일의 사용자가 이미 존재합니다';
       return res.status(400).send(errors);
     } else {
       // user === null
@@ -44,9 +44,13 @@ router.post('/register', async (req, res) => {
         d: 'mm' // Default img
       });
 
+      // Get handle from email
+      const handle = email.split('@')[0];
+
       const newUser = new User({
         ...req.body,
-        avatar
+        avatar,
+        handle
       });
 
       // Hash password
@@ -100,7 +104,8 @@ router.post('/login', async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        avatar: user.avatar
+        avatar: user.avatar,
+        handle: user.handle
       };
 
       const token = jwt.sign(payload, SECRET_OR_KEY, { expiresIn: '24h' });
