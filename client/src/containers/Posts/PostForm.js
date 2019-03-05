@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { CustomField } from '../../components';
 import { createPost } from '../../actions/post.action';
+import postTags from './tags';
 
 class PostForm extends Component {
   onSubmit = values => {
@@ -37,9 +38,23 @@ class PostForm extends Component {
                   errors={errors}
                 />
               </div>
-              <button type="submit" className="btn btn-dark float-right">
-                <i className="fas fa-check" /> 저장
-              </button>
+              <div className="d-sm-flex">
+                <div className="mb-2">
+                  {postTags.map((tag, index) => (
+                    <span key={index} className="badge badge-primary mr-2">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="ml-auto">
+                  <button
+                    type="submit"
+                    className="btn btn-dark btn-block ml-auto"
+                  >
+                    <i className="fas fa-check" /> 저장
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
         </div>

@@ -15,11 +15,17 @@ import {
 import { setErrors } from '../../actions/errors.action';
 import { Spinner } from '../../components';
 import Post from './Post';
+import postTags from './tags';
 
 class Posts extends Component {
   componentDidMount() {
     this.props.getPosts();
     this.props.setErrors();
+  }
+
+  onTagClick(e, tag) {
+    e.target.className += 'bg-primary text-white';
+    console.log(tag);
   }
 
   renderPosts = () => {
@@ -65,7 +71,17 @@ class Posts extends Component {
         </Helmet>
         <div className="container">
           <div className="row">
-            <div className="col-md-8 mx-auto">
+            <div className="col-md-3 d-none d-md-block">
+              <ul className="list-group">
+                <li className="list-group-item">#All</li>
+                {postTags.map((tag, index) => (
+                  <li key={index} className="list-group-item">
+                    <span onClick={e => this.onTagClick(e, tag)}>#{tag}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="col-md-9">
               <h1 className="display-4 mb-3">
                 <i className="fas fa-comments" /> 게시판
               </h1>

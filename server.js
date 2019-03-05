@@ -12,8 +12,6 @@ const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 
 const app = express();
 
-app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
-
 // MIDDLEWARES
 app.use(bodyParser.urlencoded({ extended: false })); // This is for easy request from postman?
 app.use(bodyParser.json());
@@ -33,6 +31,8 @@ app.use('/api/profile', profile);
 
 // Production behaviors
 if (process.env.NODE_ENV === 'production') {
+  app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+
   // Express will serve up static assets
   app.use(express.static('client/build'));
 

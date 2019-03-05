@@ -3,9 +3,9 @@
   "name": "뉴코더 - 코딩 새내기들의 소셜네트워크",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "android-chrome-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
     }
   ],
   "start_url": ".",
