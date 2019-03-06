@@ -4,7 +4,7 @@ import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
 import { CustomField } from '../../components';
-import { createPost } from '../../actions/post.action';
+import { createPost, selectTag } from '../../actions/post.action';
 import postTags from './tags';
 
 class PostForm extends Component {
@@ -21,6 +21,7 @@ class PostForm extends Component {
     };
 
     this.props.createPost(newPost);
+    this.props.selectTag(this.state.selectedTag);
     this.setState({ selectedTag: null });
   };
 
@@ -100,7 +101,8 @@ const mapStateToProps = state => {
 PostForm = connect(
   mapStateToProps,
   {
-    createPost
+    createPost,
+    selectTag
   }
 )(PostForm);
 

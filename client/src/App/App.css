@@ -7,6 +7,25 @@
   min-height: 87vh;
 }
 
+.tag-selected {
+  text-decoration: underline;
+  font-weight: 700 !important;
+  color: blue;
+}
+
+.tag-menu {
+  cursor: pointer;
+}
+
+.tag-menu:hover {
+  font-weight: 700;
+}
+/* 
+.tag-select-menu .list-group-item {
+  padding: 0;
+  display: inline;
+} */
+
 img {
   width: 100%;
 }
