@@ -8,15 +8,25 @@ import { createPost } from '../../actions/post.action';
 import postTags from './tags';
 
 class PostForm extends Component {
+  state = {
+    selectedTag: null
+  };
+
   onSubmit = values => {
     // const { user } = this.props.auth;
 
     const newPost = {
-      text: values.text
+      text: values.text,
+      tag: this.state.selectedTag
     };
 
     this.props.createPost(newPost);
+    this.setState({ selectedTag: null });
   };
+
+  onTagClick(tag) {
+    this.setState({ selectedTag: tag });
+  }
 
   render() {
     const { errors, handleSubmit } = this.props;
@@ -29,19 +39,26 @@ class PostForm extends Component {
           </div>
           <div className="card-body p-3">
             <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
-              <div className="form-group">
-                <CustomField
-                  type="text"
-                  component="textarea"
-                  name="text"
-                  placeholder="유용한 정보, 궁금한 질문, 스터디 모집 등을 자유롭게 게시해 주세요"
-                  errors={errors}
-                />
-              </div>
+              <CustomField
+                type="text"
+                component="textarea"
+                name="text"
+                placeholder="아래 태그 중 하나를 선택하고 관련된 글을 작성하세요"
+                errors={errors}
+              />
               <div className="d-sm-flex">
                 <div className="mb-2">
                   {postTags.map((tag, index) => (
-                    <span key={index} className="badge badge-primary mr-2">
+                    <span
+                      onClick={() => this.onTagClick(tag)}
+                      style={{ cursor: 'pointer' }}
+                      key={index}
+                      className={
+                        this.state.selectedTag === tag
+                          ? 'badge mr-2 badge-primary'
+                          : 'badge mr-2'
+                      }
+                    >
                       #{tag}
                     </span>
                   ))}

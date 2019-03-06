@@ -20,6 +20,7 @@ export const createPost = postData => async dispatch => {
       payload: res.data
     });
     dispatch(reset('postForm'));
+    dispatch(setErrors());
   } catch (err) {
     dispatch(setErrors(err.response.data));
   }
