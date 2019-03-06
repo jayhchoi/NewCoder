@@ -146,7 +146,7 @@ class Posts extends Component {
                   <button
                     key={index}
                     className={`btn btn-outline-secondary p-1 mr-2 my-1 ${
-                      this.props.tag === null ? 'active' : ''
+                      this.props.tag === tag ? 'active' : ''
                     }`}
                   >
                     <span
