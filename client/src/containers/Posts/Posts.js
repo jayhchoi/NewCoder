@@ -145,7 +145,9 @@ class Posts extends Component {
                 {postTags.map((tag, index) => (
                   <button
                     key={index}
-                    className="btn btn-outline-secondary p-1 mr-2 my-1"
+                    className={`btn btn-outline-secondary p-1 mr-2 my-1 ${
+                      this.props.tag === null ? 'active' : ''
+                    }`}
                   >
                     <span
                       className={
