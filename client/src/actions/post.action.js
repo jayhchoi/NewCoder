@@ -7,7 +7,8 @@ import {
   FETCHING_POSTS,
   CLEAR_POSTS,
   DELETE_POST,
-  GET_POST
+  GET_POST,
+  SELECT_TAG
 } from './types';
 
 import { setErrors } from './errors.action';
@@ -20,6 +21,7 @@ export const createPost = postData => async dispatch => {
       payload: res.data
     });
     dispatch(reset('postForm'));
+    dispatch(setErrors());
   } catch (err) {
     dispatch(setErrors(err.response.data));
   }
@@ -125,4 +127,11 @@ export const deleteComment = (postId, commentId) => async dispatch => {
   } catch (err) {
     dispatch(setErrors(err.response.data));
   }
+};
+
+export const selectTag = tag => {
+  return {
+    type: SELECT_TAG,
+    payload: tag
+  };
 };

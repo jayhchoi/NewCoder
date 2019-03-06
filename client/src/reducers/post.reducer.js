@@ -4,12 +4,14 @@ import {
   FETCHING_POSTS,
   GET_POSTS,
   GET_POST,
-  DELETE_POST
+  DELETE_POST,
+  SELECT_TAG
 } from '../actions/types';
 
 const initialState = {
   isFetching: false,
-  posts: {}
+  posts: {},
+  selectedTag: null
 };
 
 export default (state = initialState, action) => {
@@ -18,7 +20,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         posts: { ...state.posts, [action.payload._id]: action.payload },
-
         isFetching: false
       };
     case DELETE_POST:
@@ -43,6 +44,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isFetching: true
+      };
+    case SELECT_TAG:
+      return {
+        ...state,
+        selectedTag: action.payload
       };
     default:
       return state;

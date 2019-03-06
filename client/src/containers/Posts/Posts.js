@@ -10,16 +10,22 @@ import {
   getPosts,
   deletePost,
   addLike,
-  removeLike
+  removeLike,
+  selectTag
 } from '../../actions/post.action';
 import { setErrors } from '../../actions/errors.action';
 import { Spinner } from '../../components';
 import Post from './Post';
+import postTags from './tags';
 
 class Posts extends Component {
   componentDidMount() {
     this.props.getPosts();
     this.props.setErrors();
+  }
+
+  onTagClick(e, tag) {
+    this.props.selectTag(tag);
   }
 
   renderPosts = () => {
@@ -42,17 +48,34 @@ class Posts extends Component {
           </h5>
         );
       } else {
-        return posts.map(post => (
-          <Post
-            key={post._id}
-            post={post}
-            auth={auth}
-            deletePostAction={deletePost}
-            addLikeAction={addLike}
-            removeLikeAction={removeLike}
-            from={this.props.location}
-          />
-        ));
+        if (this.props.tag === null)
+          return posts.map(post => (
+            <Post
+              key={post._id}
+              post={post}
+              auth={auth}
+              deletePostAction={deletePost}
+              addLikeAction={addLike}
+              removeLikeAction={removeLike}
+              from={this.props.location}
+            />
+          ));
+
+        return posts.map(post => {
+          if (post.tag === this.props.tag) {
+            return (
+              <Post
+                key={post._id}
+                post={post}
+                auth={auth}
+                deletePostAction={deletePost}
+                addLikeAction={addLike}
+                removeLikeAction={removeLike}
+                from={this.props.location}
+              />
+            );
+          }
+        });
       }
     }
   };
@@ -65,11 +88,76 @@ class Posts extends Component {
         </Helmet>
         <div className="container">
           <div className="row">
-            <div className="col-md-8 mx-auto">
+            {/* Tag select menu */}
+            <div className="col-md-3 tag-select-menu d-none d-md-block">
+              <ul className="list-group">
+                <li
+                  onClick={() => this.props.selectTag(null)}
+                  className="list-group-item"
+                >
+                  <span
+                    className={
+                      this.props.tag === null
+                        ? `tag-menu tag-selected`
+                        : `tag-menu`
+                    }
+                  >
+                    #All
+                  </span>
+                </li>
+                {postTags.map((tag, index) => (
+                  <li key={index} className="list-group-item">
+                    <span
+                      className={
+                        this.props.tag === tag
+                          ? `tag-menu tag-selected`
+                          : 'tag-menu'
+                      }
+                      onClick={e => this.onTagClick(e, tag)}
+                    >
+                      #{tag}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="col-md-9">
               <h1 className="display-4 mb-3">
                 <i className="fas fa-comments" /> 게시판
               </h1>
               <PostForm />
+              {/* Tag select menu for mobile */}
+              <div className="d-md-none text-center mb-2">
+                <button
+                  onClick={() => this.props.selectTag(null)}
+                  className={`btn btn-outline-secondary p-1 mr-2 my-1 ${
+                    this.props.tag === null ? 'active' : ''
+                  }`}
+                >
+                  <span
+                    className={
+                      this.props.tag === null ? `tag-menu` : `tag-menu`
+                    }
+                  >
+                    #All
+                  </span>
+                </button>
+                {postTags.map((tag, index) => (
+                  <button
+                    key={index}
+                    className="btn btn-outline-secondary p-1 mr-2 my-1"
+                  >
+                    <span
+                      className={
+                        this.props.tag === tag ? `tag-menu` : 'tag-menu'
+                      }
+                      onClick={e => this.onTagClick(e, tag)}
+                    >
+                      #{tag}
+                    </span>
+                  </button>
+                ))}
+              </div>
               {this.renderPosts()}
             </div>
           </div>
@@ -93,7 +181,8 @@ const mapStateToProps = state => {
   return {
     posts: _.orderBy(state.post.posts, ['_id'], ['desc']), // Convert to array of objects while sorting it desc
     isFetching: state.post.isFetching,
-    auth: state.auth
+    auth: state.auth,
+    tag: state.post.selectedTag
   };
 };
 
@@ -104,6 +193,7 @@ export default connect(
     deletePost,
     addLike,
     removeLike,
-    setErrors
+    setErrors,
+    selectTag
   }
 )(Posts);

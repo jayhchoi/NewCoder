@@ -36,13 +36,24 @@ const Post = ({
               alt=""
             />
           </Link>
-          <div className="author pl-3" style={{ marginLeft: '64px' }}>
-            <span className="mr-2 text-info">{post.user.name}</span>
-            <span className="text-muted float-right">
-              <Moment format="YYYY/MM/DD">{post.created}</Moment>
-            </span>
+          <div
+            className="author pl-3 d-flex justify-content-between align-items-top"
+            style={{ marginLeft: '64px' }}
+          >
+            <div>
+              <span className="text-info">{post.user.name}</span>
+            </div>
+            <div className="text-right">
+              <div className="text-muted">
+                <Moment format="YYYY/MM/DD">{post.created}</Moment>
+              </div>
+              <div className="badge badge-primary">#{post.tag}</div>
+            </div>
           </div>
-          <div className="post-content p-3" style={{ marginLeft: '64px' }}>
+          <div
+            className="post-content py-1 px-3"
+            style={{ marginLeft: '64px' }}
+          >
             {post.text}
           </div>
         </div>
