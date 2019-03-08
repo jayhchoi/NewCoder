@@ -15,6 +15,8 @@ import {
 } from '../../actions/post.action';
 import { setErrors } from '../../actions/errors.action';
 import { Spinner } from '../../components';
+import { Page } from '../../wrappers';
+
 import Post from './Post';
 import postTags from './tags';
 
@@ -82,7 +84,7 @@ class Posts extends Component {
 
   render() {
     return (
-      <div className="feed page">
+      <Page>
         <Helmet>
           <title>NewCoder | 게시판</title>
         </Helmet>
@@ -164,7 +166,7 @@ class Posts extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Page>
     );
   }
 }

@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 import { Spinner, BackButton } from '../../components';
+import { Page } from '../../wrappers';
+
 import { getProfileByHandle } from '../../actions/profiles.action';
 
 import ProfileHeader from './ProfileHeader';
@@ -58,13 +60,13 @@ class ProfileDetail extends Component {
 
   render() {
     return (
-      <div className="profile-detail page">
+      <Page>
         <div className="container">
           <div className="row">
             <div className="col-md-12">{this.renderContent()}</div>
           </div>
         </div>
-      </div>
+      </Page>
     );
   }
 }

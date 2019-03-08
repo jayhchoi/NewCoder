@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet';
 
 import CustomField from '../../components/CustomField/CustomField';
 import loginFormFields from './loginFormFields';
+import { Page } from '../../wrappers';
 
 import { loginUser } from '../../actions/auth.action';
 import { setErrors } from '../../actions/errors.action';
@@ -41,7 +42,7 @@ class Login extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div className="login py-4 page">
+      <Page>
         <Helmet>
           <title>NewCoder | 로그인</title>
         </Helmet>
@@ -61,7 +62,7 @@ class Login extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Page>
     );
   }
 }

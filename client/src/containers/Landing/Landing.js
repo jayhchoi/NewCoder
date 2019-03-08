@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import history from '../../utils/history';
+import { Page } from '../../wrappers';
 
 class Landing extends Component {
   componentWillMount() {
@@ -14,7 +15,7 @@ class Landing extends Component {
 
   render() {
     return (
-      <div className="landing page">
+      <Page>
         <div className="dark-overlay landing-inner text-light">
           <div className="container">
             <div className="row">
@@ -33,7 +34,7 @@ class Landing extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Page>
     );
   }
 }
