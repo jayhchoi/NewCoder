@@ -2,26 +2,36 @@ import axios from 'axios';
 import { reset } from 'redux-form';
 
 import {
-  CREATE_POST,
-  GET_POSTS,
-  FETCHING_POSTS,
-  CLEAR_POSTS,
-  DELETE_POST,
-  GET_POST,
-  SELECT_TAG
+  FETCHING_POST,
+  SET_POSTS,
+  UPDATE_POST,
+  REMOVE_POST,
+  SET_SELECTEDTAG
 } from './types';
-
 import { setErrors } from './errors.action';
+
+export const getPosts = () => async dispatch => {
+  try {
+    dispatch({ type: FETCHING_POST });
+    const res = await axios.get('/api/posts');
+    dispatch({
+      type: SET_POSTS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch(setErrors(err.response.data));
+  }
+};
 
 export const createPost = postData => async dispatch => {
   try {
     const res = await axios.post('/api/posts', postData);
     dispatch({
-      type: CREATE_POST,
+      type: UPDATE_POST,
       payload: res.data
     });
     dispatch(reset('postForm'));
-    dispatch(setErrors());
+    dispatch(setErrors()); // Clear error messages after successfully creating post
   } catch (err) {
     dispatch(setErrors(err.response.data));
   }
@@ -30,9 +40,8 @@ export const createPost = postData => async dispatch => {
 export const deletePost = postId => async dispatch => {
   try {
     await axios.delete(`/api/posts/${postId}`);
-    console.log(postId);
     dispatch({
-      type: DELETE_POST,
+      type: REMOVE_POST,
       payload: postId
     });
   } catch (err) {
@@ -40,67 +49,40 @@ export const deletePost = postId => async dispatch => {
   }
 };
 
-export const getPosts = () => async dispatch => {
-  dispatch({ type: FETCHING_POSTS });
-  try {
-    const res = await axios.get('/api/posts');
-    dispatch({
-      type: GET_POSTS,
-      payload: res.data
-    });
-  } catch (err) {
-    dispatch(setErrors(err.response.data));
-    dispatch({
-      type: CLEAR_POSTS
-    });
-  }
-};
-
 export const getPost = postId => async dispatch => {
-  dispatch({ type: FETCHING_POSTS });
+  dispatch({ type: FETCHING_POST });
   try {
     const res = await axios.get(`/api/posts/${postId}`);
     dispatch({
-      type: GET_POST,
+      type: UPDATE_POST,
       payload: res.data
     });
   } catch (err) {
     dispatch(setErrors(err.response.data));
-    dispatch({
-      type: CLEAR_POSTS
-    });
   }
 };
 
 export const addLike = postId => async dispatch => {
   try {
-    await axios.post(`/api/posts/like/${postId}`);
-    const res = await axios.get('/api/posts');
+    const res = await axios.post(`/api/posts/like/${postId}`);
     dispatch({
-      type: GET_POSTS,
+      type: UPDATE_POST,
       payload: res.data
     });
   } catch (err) {
     dispatch(setErrors(err.response.data));
-    dispatch({
-      type: CLEAR_POSTS
-    });
   }
 };
 
 export const removeLike = postId => async dispatch => {
   try {
-    await axios.post(`/api/posts/unlike/${postId}`);
-    const res = await axios.get('/api/posts');
+    const res = await axios.post(`/api/posts/unlike/${postId}`);
     dispatch({
-      type: GET_POSTS,
+      type: UPDATE_POST,
       payload: res.data
     });
   } catch (err) {
     dispatch(setErrors(err.response.data));
-    dispatch({
-      type: CLEAR_POSTS
-    });
   }
 };
 
@@ -108,10 +90,11 @@ export const addComment = (postId, commentData) => async dispatch => {
   try {
     const res = await axios.post(`/api/posts/comment/${postId}`, commentData);
     dispatch({
-      type: GET_POST,
-      payload: res.data // This is updated post
+      type: UPDATE_POST,
+      payload: res.data
     });
     dispatch(reset('commentForm'));
+    dispatch(setErrors());
   } catch (err) {
     dispatch(setErrors(err.response.data));
   }
@@ -121,8 +104,8 @@ export const deleteComment = (postId, commentId) => async dispatch => {
   try {
     const res = await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
     dispatch({
-      type: GET_POST,
-      payload: res.data // This is updated post
+      type: UPDATE_POST,
+      payload: res.data
     });
   } catch (err) {
     dispatch(setErrors(err.response.data));
@@ -131,7 +114,7 @@ export const deleteComment = (postId, commentId) => async dispatch => {
 
 export const selectTag = tag => {
   return {
-    type: SELECT_TAG,
+    type: SET_SELECTEDTAG,
     payload: tag
   };
 };

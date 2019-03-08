@@ -7,18 +7,18 @@ import { SET_CURRENT_USER } from './types';
 import { setAuthToken, history } from '../utils';
 import { setErrors } from './errors.action';
 
-export const registerUser = registerInput => async dispatch => {
+export const registerUser = userData => async dispatch => {
   try {
-    await axios.post('/api/users/register', registerInput);
+    await axios.post('/api/users/register', userData);
     history.push('/login');
   } catch (err) {
     dispatch(setErrors(err.response.data));
   }
 };
 
-export const loginUser = loginInput => async dispatch => {
+export const loginUser = userData => async dispatch => {
   try {
-    const res = await axios.post('/api/users/login', loginInput);
+    const res = await axios.post('/api/users/login', userData);
     const { token } = res.data;
 
     localStorage.setItem('jwt', token);

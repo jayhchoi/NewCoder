@@ -111,7 +111,7 @@ router.post(
       // Add user id to likes array
       post.likes.unshift({ user: req.user._id });
       const updatedPost = await post.save();
-      res.send(updatedPost);
+      res.send(await Post.populate(updatedPost, ['user']));
     } catch (err) {
       res.status(400).send({ like: err.message });
     }
@@ -143,7 +143,7 @@ router.post(
       post.likes.splice(removeIndex, 1);
 
       const updatedPost = await post.save();
-      res.send(updatedPost);
+      res.send(await Post.populate(updatedPost, ['user']));
     } catch (err) {
       res.status(400).send({ unlike: err.message });
     }
