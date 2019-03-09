@@ -27,8 +27,7 @@ class Dashboard extends Component {
 
   renderContent() {
     const { user } = this.props.auth;
-    const { profiles, isFetching } = this.props.profile;
-    const profile = Object.values(profiles)[0];
+    const { profile, isFetching } = this.props.profile;
 
     if (isFetching) {
       return <Spinner />;

@@ -111,11 +111,4 @@ const ProfileCredentials = ({
   );
 };
 
-// const mapStateToProps = state => {
-//   return {
-//     user: state.auth.user,
-//     profile: state.profile.profile
-//   };
-// };
-
 export default ProfileCredentials;

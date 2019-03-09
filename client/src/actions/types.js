@@ -12,8 +12,7 @@ export const REMOVE_POST = 'REMOVE_POST';
 export const SET_SELECTEDTAG = 'SET_SELECTEDTAG';
 
 // Profile
-export const GET_PROFILES = 'GET_PROFILES';
-export const GET_PROFILE = 'GET_PROFILE';
-export const FETCHING_PROFILES = 'FETCHING_PROFILES';
-export const CLEAR_PROFILES = 'CLEAR_PROFILES';
+export const FETCHING_PROFILE = 'FETCHING_PROFILE';
+export const SET_PROFILES = 'SET_PROFILES';
+export const SET_PROFILE = 'SET_PROFILE';
 export const CREATE_PROFILE = 'CREATE_PROFILE';

@@ -46,7 +46,7 @@ class EditProfile extends Component {
   render() {
     if (
       this.props.profile.isFetching ||
-      Object.keys(this.props.profile.profiles).length === 0
+      Object.keys(this.props.profile.profile).length === 0
     )
       return <Spinner />;
 
@@ -111,7 +111,7 @@ const mapStateToProps = state => {
   return {
     errors: state.errors,
     profile: state.profile,
-    initialValues: state.profile.profile
+    initialValues: { ...state.profile.profile, ...state.profile.profile.social }
   };
 };
 

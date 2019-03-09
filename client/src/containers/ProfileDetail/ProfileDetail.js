@@ -19,8 +19,7 @@ class ProfileDetail extends Component {
   }
 
   renderContent() {
-    const { profiles, isFetching } = this.props.profile;
-    const profile = Object.values(profiles)[0];
+    const { profile, isFetching } = this.props.profile;
 
     if (isFetching) {
       return <Spinner />;
@@ -71,7 +70,7 @@ class ProfileDetail extends Component {
 
 ProfileDetail.propTypes = {
   getProfileByHandle: PropTypes.func.isRequired,
-  profile: PropTypes.object
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {
