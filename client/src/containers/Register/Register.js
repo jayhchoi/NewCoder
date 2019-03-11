@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import CustomField from '../../components/CustomField/CustomField';
@@ -84,8 +83,10 @@ Register = connect(
     registerUser,
     setErrors
   }
-)(withRouter(Register));
+)(Register);
 
-export default reduxForm({
+Register = reduxForm({
   form: 'registerForm'
 })(Register);
+
+export default Register;

@@ -7,3 +7,4 @@ export { default as Experience } from './Experience/Experience';
 export { default as Education } from './Education/Education';
 export { default as NotFound } from './NotFound/NotFound';
 export { default as BackButton } from './BackButton/BackButton';
+export { default as HeaderTag } from './HeaderTag/HeaderTag';

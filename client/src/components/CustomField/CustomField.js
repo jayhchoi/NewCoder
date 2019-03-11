@@ -3,16 +3,17 @@ import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
 
 const CustomField = ({
-  component,
+  prepend,
   type,
+  component,
   name,
   placeholder,
   errors,
   options,
-  prepend,
   icon,
   label
 }) => {
+  // Input field with prepended icon
   if (prepend) {
     return (
       <div className="input-group mb-3">
@@ -30,11 +31,12 @@ const CustomField = ({
             errors && errors[name] ? 'is-invalid' : ''
           }`}
         />
-        <div className="invalid-feedback">{errors[name]}</div>
+        <div className="invalid-feedback">{errors && errors[name]}</div>
       </div>
     );
   }
 
+  // Input of type checkbox
   if (type === 'checkbox') {
     return (
       <div className="form-group form-check">
@@ -52,6 +54,7 @@ const CustomField = ({
     );
   }
 
+  // Basic type input
   return (
     <div className="form-group">
       {label ? <label htmlFor={name}>{label}</label> : null}
@@ -64,6 +67,7 @@ const CustomField = ({
           errors && errors[name] ? 'is-invalid' : ''
         }`}
       >
+        {/* If options exists, input type of select */}
         {options
           ? options.map(({ value, label }) => (
               <option key={value} value={value}>
@@ -72,7 +76,7 @@ const CustomField = ({
             ))
           : null}
       </Field>
-      <div className="invalid-feedback">{errors ? errors[name] : ''}</div>
+      <div className="invalid-feedback">{errors && errors[name]}</div>
     </div>
   );
 };
@@ -82,7 +86,11 @@ CustomField.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  errors: PropTypes.object
+  errors: PropTypes.object,
+  prepend: PropTypes.bool,
+  options: PropTypes.array,
+  icon: PropTypes.string,
+  label: PropTypes.string
 };
 
 export default CustomField;

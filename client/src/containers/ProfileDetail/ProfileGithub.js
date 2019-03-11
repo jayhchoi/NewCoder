@@ -3,30 +3,32 @@ import PropTypes from 'prop-types';
 
 class ProfileGithub extends Component {
   state = {
-    repos: []
+    repos: [],
+    isFetching: true
   };
 
   componentDidMount() {
     const { username } = this.props;
-
-    const count = 5,
-      sort = 'created: asc',
-      clientId = process.env.REACT_APP_GITHUB_CLIENT_ID,
-      clientSecret = process.env.REACT_APP_GITHUB_SECRET;
+    const count = 5;
+    const sort = 'created: asc';
+    const clientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
+    const clientSecret = process.env.REACT_APP_GITHUB_SECRET;
 
     fetch(
       `https://api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`
     )
       .then(res => res.json())
-      .then(data => {
-        this.setState({ repos: data });
-      })
-      .catch();
+      .then(data => this.setState({ repos: data, isFetching: false }))
+      .catch(err => {
+        this.setState({ isFetching: false });
+        console.log(err);
+      });
   }
 
   renderRepos() {
-    const { repos } = this.state;
+    const { repos, isFetching } = this.state;
     if (repos.message) return null;
+    if (isFetching) return <p>Loading...</p>;
 
     return repos.map(repo => (
       <div key={repo.id} className="card card-body mb-2">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const BackButton = ({ state, defaultTo }) => {
   return (
@@ -7,6 +8,11 @@ const BackButton = ({ state, defaultTo }) => {
       뒤로
     </Link>
   );
+};
+
+BackButton.propTypes = {
+  state: PropTypes.object,
+  defaultTo: PropTypes.string.isRequired
 };
 
 export default BackButton;
