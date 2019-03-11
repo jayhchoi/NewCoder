@@ -9,6 +9,7 @@ import { experienceFields } from '../../constants/profileFormFields';
 
 import history from '../../utils/history';
 import { CustomField, BackButton } from '../../components';
+import { Page } from '../../wrappers';
 
 class AddExperience extends Component {
   componentDidMount() {
@@ -30,7 +31,7 @@ class AddExperience extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="add-experience py-4">
+      <Page>
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -52,7 +53,7 @@ class AddExperience extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Page>
     );
   }
 }

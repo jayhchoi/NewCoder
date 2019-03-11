@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
 import { Spinner } from '../../components';
+import { Page } from '../../wrappers';
+
 import { getProfiles } from '../../actions/profiles.action';
 import Profile from './Profile';
 
@@ -40,7 +42,7 @@ class Profiles extends Component {
 
   render() {
     return (
-      <div className="profiles bg-secondary page">
+      <Page dark>
         <Helmet>
           <title>NewCoder | 회원목록</title>
         </Helmet>
@@ -57,7 +59,7 @@ class Profiles extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Page>
     );
   }
 }

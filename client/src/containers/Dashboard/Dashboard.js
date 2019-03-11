@@ -12,6 +12,7 @@ import {
   deleteEducation
 } from '../../actions/profiles.action';
 import { Spinner, Experience, Education } from '../../components';
+import { Page } from '../../wrappers';
 import history from '../../utils/history';
 
 import ProfileButtons from './ProfileButtons';
@@ -83,7 +84,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="dashboard py-4 page">
+      <Page>
         <Helmet>
           <title>NewCoder | My Home</title>
         </Helmet>
@@ -97,7 +98,7 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Page>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
 
 import { connect } from 'react-redux';
 import PostForm from './PostForm';
@@ -15,6 +16,8 @@ import {
 } from '../../actions/post.action';
 import { setErrors } from '../../actions/errors.action';
 import { Spinner } from '../../components';
+import { Page } from '../../wrappers';
+
 import Post from './Post';
 import postTags from './tags';
 
@@ -75,6 +78,7 @@ class Posts extends Component {
               />
             );
           }
+          return null;
         });
       }
     }
@@ -82,41 +86,31 @@ class Posts extends Component {
 
   render() {
     return (
-      <div className="feed page">
+      <Page>
         <Helmet>
           <title>NewCoder | 게시판</title>
         </Helmet>
         <div className="container">
           <div className="row">
             {/* Tag select menu */}
-            <div className="col-md-3 tag-select-menu d-none d-md-block">
+            <div className="col-md-3 d-none d-md-block">
               <ul className="list-group">
                 <li
                   onClick={() => this.props.selectTag(null)}
                   className="list-group-item"
                 >
-                  <span
-                    className={
-                      this.props.tag === null
-                        ? `tag-menu tag-selected`
-                        : `tag-menu`
-                    }
-                  >
+                  <Tag selected={this.props.tag === null ? true : false}>
                     #All
-                  </span>
+                  </Tag>
                 </li>
                 {postTags.map((tag, index) => (
                   <li key={index} className="list-group-item">
-                    <span
-                      className={
-                        this.props.tag === tag
-                          ? `tag-menu tag-selected`
-                          : 'tag-menu'
-                      }
+                    <Tag
+                      selected={this.props.tag === tag ? true : false}
                       onClick={e => this.onTagClick(e, tag)}
                     >
                       #{tag}
-                    </span>
+                    </Tag>
                   </li>
                 ))}
               </ul>
@@ -164,10 +158,27 @@ class Posts extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Page>
     );
   }
 }
+
+const Tag = styled.span`
+  cursor: pointer;
+
+  ${props =>
+    props.selected
+      ? `
+        text-decoration: underline;
+        font-weight: 700 !important;
+        color: blue;
+      `
+      : ``}
+
+  :hover {
+    font-weight: 700;
+  }
+`;
 
 Posts.propTypes = {
   posts: PropTypes.array.isRequired,

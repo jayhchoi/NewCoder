@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet';
 
 import CustomField from '../../components/CustomField/CustomField';
 import registerFormFields from './registerFormFields';
+import { Page } from '../../wrappers';
 
 import { registerUser } from '../../actions/auth.action';
 import { setErrors } from '../../actions/errors.action';
@@ -38,29 +39,27 @@ class Register extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div>
-        <div className="register py-4 page">
-          <Helmet>
-            <title>NewCoder | 회원가입</title>
-          </Helmet>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-8 m-auto">
-                <h1 className="display-4 text-center">회원가입</h1>
-                <p className="lead text-center">
-                  뉴코더에 가입하고 함께 코딩하세요!
-                </p>
-                <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
-                  {this.renderFields()}
-                  <button type="submit" className="btn btn-info btn-block mt-4">
-                    확인
-                  </button>
-                </form>
-              </div>
+      <Page>
+        <Helmet>
+          <title>NewCoder | 회원가입</title>
+        </Helmet>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8 m-auto">
+              <h1 className="display-4 text-center">회원가입</h1>
+              <p className="lead text-center">
+                뉴코더에 가입하고 함께 코딩하세요!
+              </p>
+              <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
+                {this.renderFields()}
+                <button type="submit" className="btn btn-info btn-block mt-4">
+                  확인
+                </button>
+              </form>
             </div>
           </div>
         </div>
-      </div>
+      </Page>
     );
   }
 }

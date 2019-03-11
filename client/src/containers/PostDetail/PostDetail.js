@@ -12,6 +12,7 @@ import { Spinner, BackButton } from '../../components';
 
 import Comment from './Comment';
 import CommentForm from './CommentForm';
+import { Page } from '../../wrappers';
 
 class PostDetail extends Component {
   componentDidMount() {
@@ -82,7 +83,7 @@ class PostDetail extends Component {
     if (this.props.profile.isFetching) return <Spinner />;
 
     return (
-      <div className="post page">
+      <Page>
         <div className="container">
           <div className="row">
             <div className="col-md-8 mx-auto">
@@ -105,7 +106,7 @@ class PostDetail extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Page>
     );
   }
 }

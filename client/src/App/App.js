@@ -16,7 +16,7 @@ import setAuthToken from '../utils/setAuthToken';
 import { logoutUser, setCurrentUser } from '../actions/auth.action';
 
 // STYLES
-import './App.css';
+import { createGlobalStyle } from 'styled-components';
 import logo from '../img/newcoder_logo.png';
 
 // COMPONENTS
@@ -37,6 +37,35 @@ import {
   Posts,
   PostDetail
 } from '../containers';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    padding-top: 56px;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  ::placeholder {
+    color: #bbb !important;
+    font-style: italic;
+  }
+
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 2.5rem !important;
+    }
+  
+    .form-control {
+      font-size: 1rem;
+    }
+  
+    .author {
+      font-weight: bold;
+    }
+  }
+`;
 
 class App extends Component {
   componentWillMount() {
@@ -64,6 +93,7 @@ class App extends Component {
     return (
       <Router history={history}>
         <div className="App">
+          <GlobalStyle />
           <Helmet>
             <link rel="canonical" href="https://www.newcoder.org" />
             <title>{titleText}</title>
@@ -120,14 +150,7 @@ class App extends Component {
 App.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   setCurrentUser: PropTypes.func.isRequired
-  // auth: PropTypes.object.isRequired
 };
-
-// const mapStateToProps = state => {
-//   return {
-//     auth: state.auth
-//   };
-// };
 
 export default connect(
   null,
