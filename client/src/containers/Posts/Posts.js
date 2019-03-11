@@ -78,6 +78,7 @@ class Posts extends Component {
               />
             );
           }
+          return null;
         });
       }
     }

@@ -18,7 +18,6 @@ import { logoutUser, setCurrentUser } from '../actions/auth.action';
 // STYLES
 import { createGlobalStyle } from 'styled-components';
 import logo from '../img/newcoder_logo.png';
-import './App.css';
 
 // COMPONENTS
 import { Navbar, Footer, PrivateRoute, NotFound } from '../components';
@@ -46,6 +45,25 @@ const GlobalStyle = createGlobalStyle`
 
   img {
     width: 100%;
+  }
+
+  ::placeholder {
+    color: #bbb !important;
+    font-style: italic;
+  }
+
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 2.5rem !important;
+    }
+  
+    .form-control {
+      font-size: 1rem;
+    }
+  
+    .author {
+      font-weight: bold;
+    }
   }
 `;
 
