@@ -29,7 +29,8 @@ const PrivateRoute = ({
 };
 
 PrivateRoute.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  redirect: PropTypes.string
 };
 
 const mapStateToProps = state => {
