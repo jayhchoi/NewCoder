@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -18,13 +18,13 @@ class Navbar extends Component {
             data-target="#mobile-nav.show"
             style={{ margin: '0' }}
           >
-            <Link className="navbar-brand m-0 p-0" to="/">
+            <NavLink className="navbar-brand m-0 p-0" to="/">
               <img
                 src={logo}
                 style={{ width: '120px', margin: '0' }}
                 alt="Not Found"
               />
-            </Link>
+            </NavLink>
           </span>
           <ul className="navbar-nav mr-auto">
             <li
@@ -32,10 +32,14 @@ class Navbar extends Component {
               data-toggle="collapse"
               data-target="#mobile-nav.show"
             >
-              <Link className="nav-link" to="/profiles">
+              <NavLink
+                activeClassName="active-link"
+                className="nav-link"
+                to="/profiles"
+              >
                 {' '}
                 회원목록
-              </Link>
+              </NavLink>
             </li>
           </ul>
           <button
@@ -56,7 +60,7 @@ class Navbar extends Component {
                     data-toggle="collapse"
                     data-target="#mobile-nav"
                   >
-                    <Link className="nav-link" to="/dashboard">
+                    <NavLink className="nav-link" to="/dashboard">
                       <img
                         className="rounded-circle"
                         src={user.avatar}
@@ -70,16 +74,20 @@ class Navbar extends Component {
                       >
                         {user.name}
                       </span>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li
                     className="nav-item"
                     data-toggle="collapse"
                     data-target="#mobile-nav"
                   >
-                    <Link className="nav-link" to="/feed">
+                    <NavLink
+                      activeClassName="active-link"
+                      className="nav-link"
+                      to="/feed"
+                    >
                       게시판
-                    </Link>
+                    </NavLink>
                   </li>
                   <li
                     className="nav-item"
@@ -102,18 +110,26 @@ class Navbar extends Component {
                     data-toggle="collapse"
                     data-target="#mobile-nav"
                   >
-                    <Link className="nav-link" to="/register">
+                    <NavLink
+                      activeClassName="active-link"
+                      className="nav-link"
+                      to="/register"
+                    >
                       회원가입
-                    </Link>
+                    </NavLink>
                   </li>
                   <li
                     className="nav-item"
                     data-toggle="collapse"
                     data-target="#mobile-nav"
                   >
-                    <Link className="nav-link" to="/login">
+                    <NavLink
+                      activeClassName="active-link"
+                      className="nav-link"
+                      to="/login"
+                    >
                       로그인
-                    </Link>
+                    </NavLink>
                   </li>
                 </Fragment>
               )}
@@ -136,9 +152,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
+Navbar = connect(
   mapStateToProps,
   {
     logoutUser
   }
 )(Navbar);
+
+export default withRouter(Navbar);

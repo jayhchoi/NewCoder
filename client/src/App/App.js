@@ -44,6 +44,10 @@ const GlobalStyle = createGlobalStyle`
     font-style: italic;
   }
 
+  .active-link {
+    color: white !important;
+  }
+
   @media only screen and (max-width: 600px) {
     h1 {
       font-size: 2.5rem !important;

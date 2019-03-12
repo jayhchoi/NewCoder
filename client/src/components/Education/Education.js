@@ -3,9 +3,9 @@ import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 
 const Education = ({ education, onDeleteClick }) => {
-  const renderEducation = education.map(edu => {
+  const renderEducation = education.map((edu, index) => {
     return (
-      <div key={edu._id} className="col-sm-6 col-md-4 my-2">
+      <div key={index} className="col-sm-6 col-md-4 my-2">
         <div className="card">
           <div className="card-body">
             <button
@@ -49,7 +49,8 @@ const Education = ({ education, onDeleteClick }) => {
 };
 
 Education.propTypes = {
-  education: PropTypes.array.isRequired
+  education: PropTypes.array.isRequired,
+  onDeleteClick: PropTypes.func.isRequired
 };
 
 export default Education;

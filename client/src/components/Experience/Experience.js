@@ -3,9 +3,9 @@ import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 
 const Experience = ({ experience, onDeleteClick }) => {
-  const renderExperience = experience.map(exp => {
+  const renderExperience = experience.map((exp, index) => {
     return (
-      <div key={exp._id} className="col-sm-6 col-md-4 my-2">
+      <div key={index} className="col-sm-6 col-md-4 my-2">
         <div className="card">
           <div className="card-body">
             <button
@@ -49,7 +49,8 @@ const Experience = ({ experience, onDeleteClick }) => {
 };
 
 Experience.propTypes = {
-  experience: PropTypes.array.isRequired
+  experience: PropTypes.array.isRequired,
+  onDeleteClick: PropTypes.func.isRequired
 };
 
 export default Experience;
