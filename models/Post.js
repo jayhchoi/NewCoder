@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const mongoose = require('mongoose')
+const { Schema } = mongoose
 
 const postSchema = new Schema({
   // Required
@@ -17,7 +17,8 @@ const postSchema = new Schema({
   },
   tag: {
     type: String,
-    required: true
+    required: true,
+    default: '기타'
   },
   likes: [
     {
@@ -44,6 +45,6 @@ const postSchema = new Schema({
       }
     }
   ]
-});
+})
 
-module.exports = Post = mongoose.model('Post', postSchema);
+module.exports = Post = mongoose.model('Post', postSchema)

@@ -1,6 +1,6 @@
-import React from 'react';
-import Moment from 'react-moment';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import Moment from 'react-moment'
+import { Link } from 'react-router-dom'
 // import { connect } from 'react-redux';
 
 const ProfileCredentials = ({
@@ -31,7 +31,7 @@ const ProfileCredentials = ({
         </p>
       ) : null}
     </li>
-  ));
+  ))
 
   const educations = education.map(edu => (
     <li key={edu._id} className="list-group-item mb-1">
@@ -55,7 +55,7 @@ const ProfileCredentials = ({
         </p>
       ) : null}
     </li>
-  ));
+  ))
 
   return (
     <div className="row">
@@ -77,7 +77,7 @@ const ProfileCredentials = ({
                   <p className="text-center">경력사항을 추가하세요</p>
                 </Link>
               ) : (
-                <p className="text-center">추가된 정보가 없습니다</p>
+                <p className="text-center pt-3">추가된 정보가 없습니다</p>
               )}
             </div>
           )}
@@ -101,14 +101,14 @@ const ProfileCredentials = ({
                   <p className="text-center">교육사항을 추가하세요</p>
                 </Link>
               ) : (
-                <p className="text-center">추가된 정보가 없습니다</p>
+                <p className="text-center pt-3">추가된 정보가 없습니다</p>
               )}
             </div>
           )}
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProfileCredentials;
+export default ProfileCredentials
