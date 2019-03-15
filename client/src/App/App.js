@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Router, Route, Switch } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import jwtDecode from 'jwt-decode';
-import { createGlobalStyle } from 'styled-components';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Router, Route, Switch } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import jwtDecode from 'jwt-decode'
+import { createGlobalStyle } from 'styled-components'
 
-import history from '../utils/history';
-import setAuthToken from '../utils/setAuthToken';
-import { logoutUser, setCurrentUser } from '../actions/auth.action';
+import history from '../utils/history'
+import setAuthToken from '../utils/setAuthToken'
+import { logoutUser, setCurrentUser } from '../actions/auth.action'
 import {
   Navbar,
   Footer,
   PrivateRoute,
   NotFound,
   HeaderTag
-} from '../components';
+} from '../components'
 import {
   Login,
   Register,
@@ -27,8 +27,9 @@ import {
   Profiles,
   ProfileDetail,
   Posts,
-  PostDetail
-} from '../containers';
+  PostDetail,
+  About
+} from '../pages'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -61,22 +62,22 @@ const GlobalStyle = createGlobalStyle`
       font-weight: bold;
     }
   }
-`;
+`
 
 class App extends Component {
   componentWillMount() {
     // Check for local token when refreshed AND keep user logged in
     if (localStorage.getItem('jwt')) {
-      const token = localStorage.getItem('jwt');
-      setAuthToken(token);
+      const token = localStorage.getItem('jwt')
+      setAuthToken(token)
 
-      const decoded = jwtDecode(token);
-      this.props.setCurrentUser(decoded);
+      const decoded = jwtDecode(token)
+      this.props.setCurrentUser(decoded)
 
       // Logout user when token expires
       if (decoded.exp < Date.now() / 1000) {
-        this.props.logoutUser();
-        window.location.href = '/login'; // Traditional a tag href
+        this.props.logoutUser()
+        window.location.href = '/login' // Traditional a tag href
       }
     }
   }
@@ -91,6 +92,7 @@ class App extends Component {
           <Switch>
             {/* PUBLIC ROUTES */}
             <Route exact path="/" component={Landing} />
+            <Route exact path="/about" component={About} />
             <Route
               exact
               path="/register"
@@ -127,14 +129,14 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
-    );
+    )
   }
 }
 
 App.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   setCurrentUser: PropTypes.func.isRequired
-};
+}
 
 export default connect(
   null,
@@ -142,4 +144,4 @@ export default connect(
     logoutUser,
     setCurrentUser
   }
-)(App);
+)(App)

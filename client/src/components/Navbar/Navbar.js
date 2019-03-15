@@ -1,17 +1,17 @@
-import React, { Component, Fragment } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react'
+import { NavLink, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
-import { logoutUser } from '../../actions/auth.action';
-import logo from '../../img/newcoder_logo_single.png';
+import { logoutUser } from '../../actions/auth.action'
+import logo from '../../img/newcoder_logo_single.png'
 
 class Navbar extends Component {
   render() {
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated, user } = this.props.auth
 
     return (
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
         <div className="container">
           <span
             data-toggle="collapse"
@@ -26,7 +26,12 @@ class Navbar extends Component {
               />
             </NavLink>
           </span>
-          <ul className="navbar-nav mr-auto">
+          <ul
+            className="navbar-nav mr-auto"
+            style={{
+              flexDirection: 'row'
+            }}
+          >
             <li
               className="nav-item"
               data-toggle="collapse"
@@ -36,9 +41,25 @@ class Navbar extends Component {
                 activeClassName="active-link"
                 className="nav-link"
                 to="/profiles"
+                style={{ paddingRight: '0.5rem', paddingLeft: '0.5rem' }}
               >
                 {' '}
                 회원목록
+              </NavLink>
+            </li>
+            <li
+              className="nav-item"
+              data-toggle="collapse"
+              data-target="#mobile-nav.show"
+            >
+              <NavLink
+                activeClassName="active-link"
+                className="nav-link"
+                to="/about"
+                style={{ paddingRight: '0.5rem', paddingLeft: '0.5rem' }}
+              >
+                {' '}
+                공지
               </NavLink>
             </li>
           </ul>
@@ -137,26 +158,26 @@ class Navbar extends Component {
           </div>
         </div>
       </nav>
-    );
+    )
   }
 }
 
 Navbar.propTypes = {
   auth: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired
-};
+}
 
 const mapStateToProps = state => {
   return {
     auth: state.auth
-  };
-};
+  }
+}
 
 Navbar = connect(
   mapStateToProps,
   {
     logoutUser
   }
-)(Navbar);
+)(Navbar)
 
-export default withRouter(Navbar);
+export default withRouter(Navbar)
