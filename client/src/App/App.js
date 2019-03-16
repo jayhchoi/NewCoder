@@ -36,10 +36,6 @@ const GlobalStyle = createGlobalStyle`
     padding-top: 56px;
   }
 
-  img {
-    width: 100%;
-  }
-
   ::placeholder {
     color: #bbb !important;
     font-style: italic;

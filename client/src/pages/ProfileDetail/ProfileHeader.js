@@ -1,5 +1,5 @@
-import React from 'react';
-import { capitalizeFirstChar } from '../../utils/helpers';
+import React from 'react'
+import { capitalizeFirstChar } from '../../utils/helpers'
 
 const ProfileHeader = ({ profile }) => {
   if (profile) {
@@ -13,6 +13,7 @@ const ProfileHeader = ({ profile }) => {
                   className="rounded-circle"
                   src={profile.user.avatar}
                   alt=""
+                  width="100%"
                 />
               </div>
             </div>
@@ -102,10 +103,10 @@ const ProfileHeader = ({ profile }) => {
           </div>
         </div>
       </div>
-    );
+    )
   } else {
-    return null;
+    return null
   }
-};
+}
 
-export default ProfileHeader;
+export default ProfileHeader
