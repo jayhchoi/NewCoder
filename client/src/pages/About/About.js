@@ -36,7 +36,7 @@ class About extends Component {
     return this.state.posts.map((post, index) => {
       return (
         <div key={index} className="mb-4">
-          <ReactMarkdown source={post} />
+          <ReactMarkdown source={post} escapeHtml={false} />
         </div>
       )
     })
