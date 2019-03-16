@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
+import styled from 'styled-components'
 
 import Page from '../../wrappers/Page'
 
@@ -35,7 +36,7 @@ class About extends Component {
 
     return this.state.posts.map((post, index) => {
       return (
-        <div key={index} className="mb-4">
+        <div key={index} style={{ marginBottom: '3.5rem' }}>
           <ReactMarkdown source={post} escapeHtml={false} />
         </div>
       )
@@ -51,7 +52,7 @@ class About extends Component {
               <h1 className="display-4">
                 <i className="fas fa-bullhorn" /> 공지사항
               </h1>
-              <div className="py-4">{this.renderPosts()}</div>
+              <Posts className="py-4">{this.renderPosts()}</Posts>
             </div>
           </div>
         </div>
@@ -59,5 +60,20 @@ class About extends Component {
     )
   }
 }
+
+const Posts = styled.div`
+  img {
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    border: solid pink 0.2rem;
+  }
+
+  @media (max-width: 575px) {
+    img {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+`
 
 export default About
