@@ -73,6 +73,10 @@ const Posts = styled.div`
       width: 100%;
       margin: none 0;
     }
+
+    video {
+      width: 100%;
+    }
   }
 `
 
