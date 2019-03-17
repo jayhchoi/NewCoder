@@ -64,14 +64,14 @@ class About extends Component {
 const Posts = styled.div`
   img {
     margin-bottom: 0.5rem;
-    margin-right: 0.5rem;
+    margin-right: 0.5%;
     border: solid pink 0.2rem;
   }
 
   @media (max-width: 575px) {
     img {
       width: 100%;
-      margin-right: 0;
+      margin: none 0;
     }
   }
 `
