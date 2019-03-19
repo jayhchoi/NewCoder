@@ -76,6 +76,7 @@ const Posts = styled.div`
 
     video {
       width: 100%;
+      height: auto;
     }
   }
 `

@@ -32,8 +32,21 @@ import {
 } from '../pages'
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   body {
-    padding-top: 56px;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
   }
 
   ::placeholder {
@@ -81,7 +94,7 @@ class App extends Component {
   render() {
     return (
       <Router history={history}>
-        <div>
+        <div id="app">
           <GlobalStyle />
           <HeaderTag />
           <Navbar />

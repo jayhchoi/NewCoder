@@ -18,44 +18,131 @@ class Landing extends Component {
   render() {
     return (
       <LandingPage>
-        <DarkOverlay>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12 text-center">
-                <h1 className="display-4 mt-5">Just keep coding</h1>
-                <h5 className="mt-4">코딩 새내기들의 소셜네트워크</h5>
-                <div className="mt-4">
-                  <Link to="/register" className="btn btn-lg btn-info mr-2">
-                    회원가입
-                  </Link>
-                  <Link to="/login" className="btn btn-lg btn-light">
-                    로그인
-                  </Link>
-                </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12 text-center">
+              <HeaderText>
+                <HeaderMain>NewCoder</HeaderMain>
+                <HeaderSub>코딩 새내기들의 소셜네트워크</HeaderSub>
+              </HeaderText>
+              <div>
+                <Button primary to="/register">
+                  회원가입
+                </Button>
+                <Button secondary to="/login">
+                  로그인
+                </Button>
               </div>
             </div>
           </div>
-        </DarkOverlay>
+        </div>
       </LandingPage>
     )
   }
 }
 
-const DarkOverlay = styled.div`
-  background-color: rgba(0, 0, 0, 0.6);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+const LandingPage = styled(Page)`
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(45, 52, 54, 0.8),
+      rgba(99, 110, 114, 0.8)
+    ),
+    url(${landingBackground});
+  background-size: cover;
+  background-position: center;
+`
+
+const HeaderText = styled.h1`
+  margin-top: 15%;
+  margin-bottom: 50px;
   color: white;
 `
 
-const LandingPage = styled(Page)`
-  position: relative;
-  background: url(${landingBackground}) no-repeat;
-  background-size: cover;
-  background-position: center;
+const HeaderMain = styled.span`
+  @keyframes moveInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+
+    80% {
+      opacity: 1;
+      transform: translateX(10px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+  font-size: 4.3rem;
+  display: block;
+  animation: moveInLeft 2s ease-out;
+`
+
+const HeaderSub = styled.span`
+  @keyframes moveInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+
+    80% {
+      opacity: 1;
+      transform: translateX(-10px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+  font-size: 1.5rem;
+  display: block;
+  opacity: 0.7;
+  animation: moveInRight 2s ease-out;
+`
+
+const Button = styled(Link)`
+  @keyframes moveInBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+  :link,
+  :visited {
+    display: inline-block;
+    text-decoration: none;
+    margin: 10px 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    animation: moveInBottom 2s ease-out;
+
+    ${props => {
+      if (props.primary) return 'background-color: #00cec9; color: white;'
+      if (props.secondary) return 'background-color: #ff7675; color: white;'
+      return 'background-color: white; color: black;'
+    }}
+  }
+
+  :hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  :active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
 `
 
 Landing.propTypes = {
