@@ -8,7 +8,7 @@ const Page = props => {
 const StyledPage = styled.div`
   padding: 40px 0;
   margin-top: 56px;
-  min-height: 82vh;
+  min-height: 85vh;
   ${props => (props.dark ? 'background-color: #607D8B' : '')}
 `
 
