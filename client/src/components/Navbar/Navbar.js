@@ -11,7 +11,10 @@ class Navbar extends Component {
     const { isAuthenticated, user } = this.props.auth
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+      <nav
+        style={{ height: '8vh' }}
+        className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top"
+      >
         <div className="container">
           <span
             data-toggle="collapse"

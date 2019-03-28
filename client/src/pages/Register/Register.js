@@ -1,41 +1,41 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { reduxForm } from 'redux-form'
+import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 
-import CustomField from '../../components/CustomField/CustomField';
-import registerFormFields from './registerFormFields';
-import { Page } from '../../wrappers';
+import CustomField from '../../components/CustomField/CustomField'
+import registerFormFields from './registerFormFields'
+import { Page } from '../../wrappers'
 
-import { registerUser } from '../../actions/auth.action';
-import { setErrors } from '../../actions/errors.action';
+import { registerUser } from '../../actions/auth.action'
+import { setErrors } from '../../actions/errors.action'
 
 class Register extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/dashboard')
     }
   }
 
   componentDidMount() {
-    this.props.setErrors();
+    this.props.setErrors()
   }
 
   onSubmit = values => {
-    this.props.registerUser(values, this.props.history);
-  };
+    this.props.registerUser(values, this.props.history)
+  }
 
   renderFields = () => {
-    const { errors } = this.props;
+    const { errors } = this.props
 
     return registerFormFields.map(field => (
       <CustomField key={field.name} {...field} errors={errors} />
-    ));
-  };
+    ))
+  }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit } = this.props
 
     return (
       <Page>
@@ -45,10 +45,8 @@ class Register extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">회원가입</h1>
-              <p className="lead text-center">
-                뉴코더에 가입하고 함께 코딩하세요!
-              </p>
+              <h1 className="text-center">회원가입</h1>
+              <p className="text-center">뉴코더에 가입하고 함께 코딩하세요!</p>
               <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
                 {this.renderFields()}
                 <button type="submit" className="btn btn-info btn-block mt-4">
@@ -59,7 +57,7 @@ class Register extends Component {
           </div>
         </div>
       </Page>
-    );
+    )
   }
 }
 
@@ -68,14 +66,14 @@ Register.propTypes = {
   setErrors: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
-};
+}
 
 const mapStateToProps = state => {
   return {
     auth: state.auth,
     errors: state.errors
-  };
-};
+  }
+}
 
 Register = connect(
   mapStateToProps,
@@ -83,10 +81,10 @@ Register = connect(
     registerUser,
     setErrors
   }
-)(Register);
+)(Register)
 
 Register = reduxForm({
   form: 'registerForm'
-})(Register);
+})(Register)
 
-export default Register;
+export default Register

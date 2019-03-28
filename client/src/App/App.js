@@ -32,45 +32,27 @@ import {
 } from '../pages'
 
 const GlobalStyle = createGlobalStyle`
-  * {
+  *,
+  *::after,
+  *::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
+  
+  html {
+    font-size: 62.5%;
+    min-height: 100vh;
+  }
 
   body {
-    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    font-size: 1.6rem;
   }
 
-  ::placeholder {
-    color: #bbb !important;
-    font-style: italic;
-  }
 
-  .active-link {
-    color: white !important;
-  }
-
-  @media only screen and (max-width: 600px) {
-    h1 {
-      font-size: 2.5rem !important;
-    }
-  
-    .form-control {
-      font-size: 1rem;
-    }
-  
-    .author {
-      font-weight: bold;
-    }
-  }
 `
 
 class App extends Component {

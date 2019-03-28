@@ -127,10 +127,8 @@ class Profiles extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4 text-center text-white">
-                뉴코더 회원목록
-              </h1>
-              <p className="lead text-center text-white">
+              <h1 className="text-center text-white">뉴코더 회원목록</h1>
+              <p className="text-center text-white">
                 다른 회원들의 프로필을 확인해 보세요
               </p>
               {this.renderContent()}

@@ -1,45 +1,45 @@
-import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
+import React, { Component } from 'react'
+import { reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 
-import CustomField from '../../components/CustomField/CustomField';
-import loginFormFields from './loginFormFields';
-import { Page } from '../../wrappers';
+import CustomField from '../../components/CustomField/CustomField'
+import loginFormFields from './loginFormFields'
+import { Page } from '../../wrappers'
 
-import { loginUser } from '../../actions/auth.action';
-import { setErrors } from '../../actions/errors.action';
+import { loginUser } from '../../actions/auth.action'
+import { setErrors } from '../../actions/errors.action'
 
 class Login extends Component {
   componentWillReceiveProps(nextProps) {
     const { from } = this.props.location.state || {
       from: { pathname: '/dashboard' }
-    };
+    }
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push(from.pathname);
+      this.props.history.push(from.pathname)
     }
   }
 
   componentDidMount() {
-    this.props.setErrors();
+    this.props.setErrors()
   }
 
   onSubmit = values => {
-    this.props.loginUser(values, this.props.history);
-  };
+    this.props.loginUser(values, this.props.history)
+  }
 
   renderFields = () => {
-    const { errors } = this.props;
+    const { errors } = this.props
 
     return loginFormFields.map(field => (
       <CustomField key={field.name} {...field} errors={errors} />
-    ));
-  };
+    ))
+  }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit } = this.props
 
     return (
       <Page>
@@ -49,8 +49,8 @@ class Login extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">로그인</h1>
-              <p className="lead text-center">
+              <h1 className="text-center">로그인</h1>
+              <p className="text-center">
                 지금 로그인하고 지역모임에 참여하세요!
               </p>
               <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
@@ -63,7 +63,7 @@ class Login extends Component {
           </div>
         </div>
       </Page>
-    );
+    )
   }
 }
 
@@ -72,14 +72,14 @@ Login.propTypes = {
   setErrors: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
-};
+}
 
 const mapStateToProps = state => {
   return {
     auth: state.auth,
     errors: state.errors
-  };
-};
+  }
+}
 
 Login = connect(
   mapStateToProps,
@@ -87,8 +87,8 @@ Login = connect(
     loginUser,
     setErrors
   }
-)(withRouter(Login));
+)(withRouter(Login))
 
 export default reduxForm({
   form: 'loginForm'
-})(Login);
+})(Login)

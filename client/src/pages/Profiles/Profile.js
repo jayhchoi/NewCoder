@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
-import history from '../../utils/history';
+import history from '../../utils/history'
 
 const Profile = ({ profile }) => {
-  const { pathname } = history.location;
+  const { pathname } = history.location
 
   return (
     <div className="col-md-4 col-sm-6 mb-3">
@@ -22,7 +22,7 @@ const Profile = ({ profile }) => {
         <CardAvatar src={profile.user.avatar} alt="..." />
         <div className="card-body">
           <p className="card-text mb-2">
-            <span className="card-title h5 mb-2">{profile.user.name}</span>
+            <span className="card-title mb-2">{profile.user.name}</span>
             {!profile.location ? null : (
               <span className="float-right">
                 <i className="fas fa-map-marker-alt" /> {profile.location}
@@ -39,7 +39,7 @@ const Profile = ({ profile }) => {
           </p>
           <hr />
           <div>
-            <h6>기술스택</h6>
+            <h4>기술스택</h4>
             {profile.skills.slice(0, 4).map((skill, index) => {
               return (
                 <span
@@ -48,12 +48,12 @@ const Profile = ({ profile }) => {
                 >
                   {skill}
                 </span>
-              );
+              )
             })}
           </div>
           <hr />
           <div>
-            <h6>관심분야</h6>
+            <h4>관심분야</h4>
             {profile.interests.slice(0, 4).map((interest, index) => {
               return (
                 <span
@@ -62,7 +62,7 @@ const Profile = ({ profile }) => {
                 >
                   {interest}
                 </span>
-              );
+              )
             })}
           </div>
           <Link
@@ -77,25 +77,29 @@ const Profile = ({ profile }) => {
         </div>
       </ProfileCard>
     </div>
-  );
-};
+  )
+}
 
 const ProfileCard = styled.div.attrs({
   className: 'card'
 })`
   border: none;
-`;
+  border-radius: 1rem;
+  overflow: hidden;
+
+  font-size: 1.6rem;
+`
 
 const CardImageWrapper = styled.div`
   height: 100px;
   overflow: hidden;
-`;
+`
 
 const CardImageTop = styled.img`
   object-fit: cover;
   width: 100%;
   height: 100%;
-`;
+`
 
 const CardAvatar = styled.img`
   margin-top: -50px !important;
@@ -103,10 +107,10 @@ const CardAvatar = styled.img`
   width: 100px;
   margin-left: 5%;
   border-radius: 50%;
-`;
+`
 
 Profile.propTypes = {
   profile: PropTypes.object.isRequired
-};
+}
 
-export default Profile;
+export default Profile

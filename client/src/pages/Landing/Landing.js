@@ -6,7 +6,8 @@ import styled from 'styled-components'
 
 import history from '../../utils/history'
 import { Page } from '../../wrappers'
-import landingBackground from '../../img/landing-background.jpg'
+import bgVideoMp4 from '../../img/Aloha-Mundo.mp4'
+import bgVideoWebm from '../../img/Aloha-Mundo.webm'
 
 class Landing extends Component {
   componentWillMount() {
@@ -18,6 +19,14 @@ class Landing extends Component {
   render() {
     return (
       <LandingPage>
+        <BackgroundVideo>
+          <BackgroundVideoContent muted autoPlay loop>
+            <source src={bgVideoMp4} type="video/mp4" />
+            <source src={bgVideoWebm} type="video/webm" />
+            Can't play background video
+          </BackgroundVideoContent>
+        </BackgroundVideo>
+
         <div className="container">
           <div className="row">
             <div className="col-md-12 text-center">
@@ -42,19 +51,28 @@ class Landing extends Component {
 }
 
 const LandingPage = styled(Page)`
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(45, 52, 54, 0.8),
-      rgba(99, 110, 114, 0.8)
-    ),
-    url(${landingBackground});
-  background-size: cover;
-  background-position: center;
+  position: relative;
+`
+
+const BackgroundVideo = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /* z-index: -1; */
+  opacity: 0.8;
+  overflow: hidden;
+`
+
+const BackgroundVideoContent = styled.video`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 `
 
 const HeaderText = styled.h1`
-  margin-top: 15%;
-  margin-bottom: 50px;
+  padding: 10rem 0;
   color: white;
 `
 
@@ -76,7 +94,7 @@ const HeaderMain = styled.span`
     }
   }
 
-  font-size: 4.3rem;
+  font-size: 7rem;
   display: block;
   animation: moveInLeft 2s ease-out;
 `
@@ -99,7 +117,7 @@ const HeaderSub = styled.span`
     }
   }
 
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   display: block;
   opacity: 0.7;
   animation: moveInRight 2s ease-out;
@@ -122,9 +140,9 @@ const Button = styled(Link)`
   :visited {
     display: inline-block;
     text-decoration: none;
-    margin: 10px 10px;
-    padding: 10px 20px;
-    border-radius: 20px;
+    margin: 1rem 1.5rem;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
     animation: moveInBottom 2s ease-out;
 
     ${props => {
@@ -135,12 +153,12 @@ const Button = styled(Link)`
   }
 
   :hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.1);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
 
   :active {
-    transform: translateY(-1px);
+    transform: translateY(-1px) scale(1.1);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
 `
