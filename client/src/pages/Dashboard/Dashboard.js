@@ -12,7 +12,7 @@ import {
   deleteEducation
 } from '../../actions/profiles.action';
 import { Spinner, Experience, Education } from '../../components';
-import { Page } from '../../wrappers';
+import { Page } from '../../styledComponents';
 import history from '../../utils/history';
 
 import ProfileButtons from './ProfileButtons';

@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import reduxThunk from 'redux-thunk'
+import { GlobalStyles, theme } from './styledComponents'
+import { ThemeProvider } from 'styled-components'
 
-import App from './App/App'
+import App from './components/App/App'
 import * as serviceWorker from './serviceWorker'
 import reducers from './reducers'
 
@@ -18,7 +20,12 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyles />
+        <App />
+      </>
+    </ThemeProvider>
   </Provider>,
   document.getElementById('root')
 )

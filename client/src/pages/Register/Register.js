@@ -3,10 +3,13 @@ import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
+import styled from 'styled-components'
 
 import CustomField from '../../components/CustomField/CustomField'
 import registerFormFields from './registerFormFields'
-import { Page } from '../../wrappers'
+import { Page, Button } from '../../styledComponents'
+import { Container, Row, ColMed } from '../../styledComponents/grid'
+import { HeadingOne, HeadingTwo } from '../../styledComponents/typo'
 
 import { registerUser } from '../../actions/auth.action'
 import { setErrors } from '../../actions/errors.action'
@@ -42,20 +45,22 @@ class Register extends Component {
         <Helmet>
           <title>NewCoder | 회원가입</title>
         </Helmet>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="text-center">회원가입</h1>
-              <p className="text-center">뉴코더에 가입하고 함께 코딩하세요!</p>
+        <Container>
+          <Row>
+            <ColMed>
+              <HeadingOne textCenter>회원가입</HeadingOne>
+              <HeadingTwo textCenter>
+                뉴코더에 가입하고 함께 코딩하세요!
+              </HeadingTwo>
               <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
                 {this.renderFields()}
-                <button type="submit" className="btn btn-info btn-block mt-4">
+                <Button block secondary type="submit">
                   확인
-                </button>
+                </Button>
               </form>
-            </div>
-          </div>
-        </div>
+            </ColMed>
+          </Row>
+        </Container>
       </Page>
     )
   }

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { Spinner, BackButton } from '../../components'
-import { Page } from '../../wrappers'
+import { Page } from '../../styledComponents'
 
 import { getProfileByHandle } from '../../actions/profiles.action'
 import { getPosts } from '../../actions/post.action'

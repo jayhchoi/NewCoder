@@ -9,7 +9,7 @@ import { educationFields } from '../../constants/profileFormFields';
 
 import history from '../../utils/history';
 import { CustomField, BackButton } from '../../components';
-import { Page } from '../../wrappers';
+import { Page } from '../../styledComponents';
 
 class AddEducation extends Component {
   componentDidMount() {

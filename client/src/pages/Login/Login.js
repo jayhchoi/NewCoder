@@ -7,7 +7,10 @@ import { Helmet } from 'react-helmet'
 
 import CustomField from '../../components/CustomField/CustomField'
 import loginFormFields from './loginFormFields'
-import { Page } from '../../wrappers'
+
+import { Page, Button } from '../../styledComponents'
+import { Container, Row, ColMed } from '../../styledComponents/grid'
+import { HeadingOne, HeadingTwo } from '../../styledComponents/typo'
 
 import { loginUser } from '../../actions/auth.action'
 import { setErrors } from '../../actions/errors.action'
@@ -46,22 +49,22 @@ class Login extends Component {
         <Helmet>
           <title>NewCoder | 로그인</title>
         </Helmet>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="text-center">로그인</h1>
-              <p className="text-center">
+        <Container>
+          <Row>
+            <ColMed>
+              <HeadingOne textCenter>로그인</HeadingOne>
+              <HeadingTwo textCenter>
                 지금 로그인하고 지역모임에 참여하세요!
-              </p>
+              </HeadingTwo>
               <form noValidate onSubmit={handleSubmit(this.onSubmit)}>
                 {this.renderFields()}
-                <button type="submit" className="btn btn-info btn-block mt-4">
+                <Button secondary block type="submit">
                   확인
-                </button>
+                </Button>
               </form>
-            </div>
-          </div>
-        </div>
+            </ColMed>
+          </Row>
+        </Container>
       </Page>
     )
   }

@@ -16,7 +16,7 @@ import {
 } from '../../actions/post.action';
 import { setErrors } from '../../actions/errors.action';
 import { Spinner } from '../../components';
-import { Page } from '../../wrappers';
+import { Page } from '../../styledComponents';
 
 import Post from './Post';
 import postTags from './tags';

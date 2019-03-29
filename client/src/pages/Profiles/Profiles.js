@@ -5,10 +5,13 @@ import { Helmet } from 'react-helmet'
 import _ from 'lodash'
 
 import { Spinner } from '../../components'
-import { Page } from '../../wrappers'
 
 import { getProfiles } from '../../actions/profiles.action'
 import Profile from './Profile'
+
+import { Page } from '../../styledComponents'
+import { Container, Row, ColFull } from '../../styledComponents/grid'
+import { HeadingOne, HeadingTwo } from '../../styledComponents/typo'
 
 class Profiles extends Component {
   state = {
@@ -124,17 +127,15 @@ class Profiles extends Component {
         <Helmet>
           <title>NewCoder | 회원목록</title>
         </Helmet>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="text-center text-white">뉴코더 회원목록</h1>
-              <p className="text-center text-white">
-                다른 회원들의 프로필을 확인해 보세요
-              </p>
-              {this.renderContent()}
-            </div>
-          </div>
-        </div>
+        <Container>
+          <HeadingOne textWhite textCenter>
+            뉴코더 회원목록
+          </HeadingOne>
+          <HeadingTwo textWhite textCenter>
+            다른 회원들의 프로필을 확인해 보세요
+          </HeadingTwo>
+          {this.renderContent()}
+        </Container>
       </Page>
     )
   }

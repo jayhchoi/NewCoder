@@ -9,7 +9,7 @@ import { experienceFields } from '../../constants/profileFormFields';
 
 import history from '../../utils/history';
 import { CustomField, BackButton } from '../../components';
-import { Page } from '../../wrappers';
+import { Page } from '../../styledComponents';
 
 class AddExperience extends Component {
   componentDidMount() {

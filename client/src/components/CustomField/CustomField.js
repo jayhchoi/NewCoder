@@ -1,6 +1,16 @@
-import React from 'react';
-import { Field } from 'redux-form';
-import PropTypes from 'prop-types';
+import React from 'react'
+import { Field } from 'redux-form'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+const StyledField = styled(Field)`
+  font-size: 1.6rem;
+  padding: 1.6rem 2rem;
+
+  &:not(:last-child) {
+    margin-bottom: 1.6rem;
+  }
+`
 
 const CustomField = ({
   prepend,
@@ -22,7 +32,7 @@ const CustomField = ({
             <i className={icon} />
           </span>
         </div>
-        <Field
+        <StyledField
           component={component}
           type={type}
           name={name}
@@ -33,14 +43,14 @@ const CustomField = ({
         />
         <div className="invalid-feedback">{errors && errors[name]}</div>
       </div>
-    );
+    )
   }
 
   // Input of type checkbox
   if (type === 'checkbox') {
     return (
       <div className="form-group form-check">
-        <Field
+        <StyledField
           id={name}
           component={component}
           type={type}
@@ -51,14 +61,14 @@ const CustomField = ({
           {placeholder}
         </label>
       </div>
-    );
+    )
   }
 
   // Basic type input
   return (
     <div className="form-group">
       {label ? <label htmlFor={name}>{label}</label> : null}
-      <Field
+      <StyledField
         component={component}
         type={type}
         name={name}
@@ -75,11 +85,11 @@ const CustomField = ({
               </option>
             ))
           : null}
-      </Field>
+      </StyledField>
       <div className="invalid-feedback">{errors && errors[name]}</div>
     </div>
-  );
-};
+  )
+}
 
 CustomField.propTypes = {
   component: PropTypes.string.isRequired,
@@ -91,6 +101,6 @@ CustomField.propTypes = {
   options: PropTypes.array,
   icon: PropTypes.string,
   label: PropTypes.string
-};
+}
 
-export default CustomField;
+export default CustomField

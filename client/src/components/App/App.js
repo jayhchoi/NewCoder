@@ -3,18 +3,17 @@ import { connect } from 'react-redux'
 import { Router, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import jwtDecode from 'jwt-decode'
-import { createGlobalStyle } from 'styled-components'
 
-import history from '../utils/history'
-import setAuthToken from '../utils/setAuthToken'
-import { logoutUser, setCurrentUser } from '../actions/auth.action'
+import history from '../../utils/history'
+import setAuthToken from '../../utils/setAuthToken'
+import { logoutUser, setCurrentUser } from '../../actions/auth.action'
 import {
   Navbar,
   Footer,
   PrivateRoute,
   NotFound,
   HeaderTag
-} from '../components'
+} from '../../components'
 import {
   Login,
   Register,
@@ -29,31 +28,7 @@ import {
   Posts,
   PostDetail,
   About
-} from '../pages'
-
-const GlobalStyle = createGlobalStyle`
-  *,
-  *::after,
-  *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html {
-    font-size: 62.5%;
-    min-height: 100vh;
-  }
-
-  body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
-    font-size: 1.6rem;
-  }
-
-
-`
+} from '../../pages'
 
 class App extends Component {
   componentWillMount() {
@@ -76,8 +51,7 @@ class App extends Component {
   render() {
     return (
       <Router history={history}>
-        <div id="app">
-          <GlobalStyle />
+        <>
           <HeaderTag />
           <Navbar />
           <Switch>
@@ -118,7 +92,7 @@ class App extends Component {
             <Route component={NotFound} />
           </Switch>
           <Footer />
-        </div>
+        </>
       </Router>
     )
   }

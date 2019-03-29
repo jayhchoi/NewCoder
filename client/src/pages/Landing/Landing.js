@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 import history from '../../utils/history'
-import { Page } from '../../wrappers'
+import { Page } from '../../styledComponents'
 import bgVideoMp4 from '../../img/Aloha-Mundo.mp4'
 import bgVideoWebm from '../../img/Aloha-Mundo.webm'
 

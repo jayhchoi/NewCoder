@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import history from '../../utils/history';
 
 import { CustomField, BackButton } from '../../components';
-import { Page } from '../../wrappers';
+import { Page } from '../../styledComponents';
 
 import { profileFields, socialFields } from '../../constants/profileFormFields';
 import {

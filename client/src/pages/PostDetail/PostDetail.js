@@ -12,7 +12,7 @@ import { Spinner, BackButton } from '../../components';
 
 import Comment from './Comment';
 import CommentForm from './CommentForm';
-import { Page } from '../../wrappers';
+import { Page } from '../../styledComponents';
 
 class PostDetail extends Component {
   componentDidMount() {

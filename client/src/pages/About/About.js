@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 
-import Page from '../../wrappers/Page'
+import Page from '../../styledComponents/Page'
 
 class About extends Component {
   state = {
